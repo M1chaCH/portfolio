@@ -3,13 +3,13 @@
     import { getLanguage } from "./languages.js"
 </script>
 
-<nav>
+<div>
     <button on:click={() => currentLanguage.set(getLanguage("EN"))}>🏴󠁧󠁢󠁥󠁮󠁧󠁿</button>
     <button on:click={() => currentLanguage.set(getLanguage("DE"))}>🇩🇪</button>
-</nav>
+</div>
 
 <style lang="scss">
-    nav {
+    div {
         position: fixed;
         bottom: 0;
         right: 0;

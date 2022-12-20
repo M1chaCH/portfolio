@@ -1,7 +1,5 @@
 import { writable, type Writable } from 'svelte/store';
-import { en, de } from "./languages.js"
-
-export type Language = "DE" | "EN";
+import { en } from "./languages.js"
 
 export const currentLanguage: Writable<any> = writable(en); 
 
