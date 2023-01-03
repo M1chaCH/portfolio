@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { currentLanguage } from "./stores";
+    import { currentLanguage } from "../stores";
     import { getLanguage } from "./languages.js"
 </script>
 
