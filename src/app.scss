@@ -9,7 +9,8 @@ body {
 
   #app {
     display: grid;
-    grid-template-columns: clamp(200px, 100%, 1400px);
+    grid-template-columns: clamp(350px, 100%, 1400px);
+    outline: black 1px solid;
     justify-content: center;
   }
 }
@@ -67,4 +68,16 @@ label {
   font-weight: 100;
   font-size: 17px;
   letter-spacing: -1px;
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 70px;
+  }
+  h2 {
+    font-size: 42px;
+  }
+  h3 {
+    font-size: 28px;
+  }
 }

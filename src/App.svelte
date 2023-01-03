@@ -6,8 +6,7 @@
 
 <LanguageSelector />
 
-<!--<main id="page-main" class="hidden">-->
-<main id="page-main" class="">
+<main id="page-main" class="hidden">
     <Hello />
 
     <div id="content">
@@ -18,6 +17,7 @@
 <style lang="scss">
   main {
     position: relative;
+    overflow-y: hidden;
   }
 
   .hidden {

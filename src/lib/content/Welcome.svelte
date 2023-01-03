@@ -64,4 +64,53 @@
       background-repeat: no-repeat;
     }
   }
+
+  @media (max-width: 1250px) {
+    .container{
+      .image-container {
+        top: calc(100vh + 50px);
+      }
+    }
+  }
+
+  @media (max-width: 920px) {
+    .container{
+      .image-container {
+        right: 50px;
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    .container{
+      .content {
+        margin-left: 5vw;
+      }
+    }
+  }
+
+  @media (max-width: 580px) {
+    .container{
+      .image-container {
+        right: -100px;
+      }
+
+      .content {
+        margin-left: 10px;
+        h1 {
+          font-size: 65px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 450px) {
+    .container{
+      .content {
+        h1 {
+          max-width: 85vw;
+        }
+      }
+    }
+  }
 </style>

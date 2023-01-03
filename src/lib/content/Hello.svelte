@@ -18,7 +18,6 @@
         <h2 id="greetings">
             {t_hello}
             <input type="text" placeholder={t_namePlaceholder} bind:value={name}/>
-            !
         </h2>
         <label for="greetings">{t_nameReason}</label>
         <a href="#content" on:click={showContent}>
@@ -40,6 +39,9 @@
       outline: none;
       border-bottom: black solid 2px;
       background-color: transparent;
+
+      max-width: 500px;
+      width: 90%;
     }
 
     input::placeholder {
@@ -81,15 +83,23 @@
 
   #nameInput {
     display: flex;
-    margin: auto;
     height: 100vh;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0 20px;
 
     div {
       display: flex;
       flex-direction: column;
+    }
+  }
+
+  @media (max-width: 500px) {
+    h2 {
+      input {
+        font-size: 42px;
+      }
     }
   }
 </style>
