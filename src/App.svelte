@@ -2,6 +2,10 @@
   import LanguageSelector  from "./lib/language-selector/LanguageSelector.svelte"
   import Hello from "./lib/content/Hello.svelte"
   import Welcome from "./lib/content/Welcome.svelte";
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
 </script>
 
 <LanguageSelector />

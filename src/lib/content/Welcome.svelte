@@ -1,9 +1,51 @@
 <script lang="ts">
     import { currentLanguage, username } from "../stores";
+    import {onMount} from "svelte";
+    import gsap from "gsap";
 
     $: t_welcome = $currentLanguage["welcome"]["welcome"];
     $: t_to = $currentLanguage["welcome"]["to"];
     $: t_my = $currentLanguage["welcome"]["my"];
+
+    const getBackgroundOffsetY = () => {
+        const width = window.innerWidth;
+        if(width > 1000)
+            return "-600px"
+        if(width > 600)
+            return "-300px"
+        return "";
+    }
+
+    onMount(() => {
+        gsap.from(".content", {
+            x: -75,
+            duration: 0.75,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: ".container",
+                start: "top 25%",
+                end: "top top",
+                toggleActions: "restart",
+                scrub: true,
+            }
+        });
+
+        gsap.from(".image-container", {
+            top: "100vh",
+            left: 0,
+            right: 0,
+            backgroundPositionY: getBackgroundOffsetY,
+            width: "100%",
+            duration: 2,
+            borderRadius: "0px",
+            scrollTrigger: {
+                trigger: ".container",
+                start: "top 35%",
+                end: "top top",
+                scrub: true,
+            }
+        });
+    });
 </script>
 
 <div class="container">
@@ -57,7 +99,7 @@
       width: 500px;
       border-radius: 50%;
 
-      background-image: url("public/images/welcome-image.jpg");
+      background-image: url("images/welcome-image.jpg");
       background-size: 110%;
       background-position-x: -25px;
       background-position-y: -2px;

@@ -1,5 +1,7 @@
 <script lang="ts">
     import { currentLanguage, username } from "../stores";
+    import {onMount} from "svelte";
+    import gsap from "gsap";
 
     $: t_hello = $currentLanguage["hello"]["hello"];
     $: t_namePlaceholder = $currentLanguage["hello"]["namePlaceholder"];
@@ -11,20 +13,32 @@
         username.set(name)
         document.getElementById("page-main").classList.remove("hidden");
     };
+
+    onMount(() => {
+        gsap.from(".anim", {
+            x: -75,
+            duration: 0.75,
+            opacity: 0,
+            stagger: 0.1
+        });
+    });
 </script>
 
 <div id="nameInput">
     <div>
-        <h2 id="greetings">
+        <h2 id="greetings" class="anim">
             {t_hello}
-            <input type="text" placeholder={t_namePlaceholder} bind:value={name}/>
+            <input type="text" class="anim" placeholder={t_namePlaceholder} bind:value={name}/>
         </h2>
-        <label for="greetings">{t_nameReason}</label>
-        <a href="#content" on:click={showContent}>
-            <span class="material-symbols-rounded">south</span>
-            <span>{t_start}</span>
-            <span class="material-symbols-rounded">south</span>
-        </a>
+        <label for="greetings" class="anim">{t_nameReason}</label>
+        <div class="anim">
+            <a href="#content" on:click={showContent}>
+                <span class="material-symbols-rounded" >south</span>
+                <span>{t_start}</span>
+                <span class="material-symbols-rounded">south</span>
+            </a>
+        </div>
+
     </div>
 </div>
 
