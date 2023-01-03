@@ -10,6 +10,7 @@
 
 <style lang="scss">
     div {
+        z-index: 100;
         position: fixed;
         bottom: 0;
         right: 0;

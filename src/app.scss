@@ -6,6 +6,12 @@ html {
 body {
   margin: 0;
   color: var(--black);
+
+  #app {
+    display: grid;
+    grid-template-columns: clamp(200px, 100%, 1400px);
+    justify-content: center;
+  }
 }
 
 ::selection {
@@ -29,4 +35,36 @@ body {
 
   --desert-sand: #D5BDAF;
   --black: #0D0907;
+}
+
+h1 {
+  display: inline-block;
+  font-family: "Poiret One", serif;
+  text-transform: uppercase;
+  font-size: 80px;
+  margin: 0 0 20px;
+}
+
+h2 {
+  display: inline-block;
+  font-family: "Poiret One", serif;
+  text-transform: uppercase;
+  font-size: 55px;
+  margin: 0 0 10px;
+}
+
+h3 {
+  display: inline-block;
+  font-family: "Poiret One", serif;
+  text-transform: uppercase;
+  font-size: 35px;
+  margin: 0 0 5px;
+}
+
+label {
+  font-family: "Chivo Mono", monospace;
+  font-style: italic;
+  font-weight: 100;
+  font-size: 17px;
+  letter-spacing: -1px;
 }

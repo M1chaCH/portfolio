@@ -1,10 +1,10 @@
 <script lang="ts">
     import { currentLanguage, username } from "../stores";
 
-    $: header = $currentLanguage["hello"];
-    $: namePlaceholder = $currentLanguage["namePlaceholder"];
-    $: nameReason = $currentLanguage["nameReason"];
-    $: start = $currentLanguage["continue"];
+    $: t_hello = $currentLanguage["hello"]["hello"];
+    $: t_namePlaceholder = $currentLanguage["hello"]["namePlaceholder"];
+    $: t_nameReason = $currentLanguage["hello"]["nameReason"];
+    $: t_start = $currentLanguage["hello"]["continue"];
 
     let name: string = $username;
     const showContent = () => {
@@ -16,13 +16,14 @@
 <div id="nameInput">
     <div>
         <h2 id="greetings">
-            {header}
-            <input type="text" placeholder={namePlaceholder} bind:value={name}/>
+            {t_hello}
+            <input type="text" placeholder={t_namePlaceholder} bind:value={name}/>
+            !
         </h2>
-        <label for="greetings">{nameReason}</label>
+        <label for="greetings">{t_nameReason}</label>
         <a href="#content" on:click={showContent}>
             <span class="material-symbols-rounded">south</span>
-            <span>{start}</span>
+            <span>{t_start}</span>
             <span class="material-symbols-rounded">south</span>
         </a>
     </div>
@@ -30,12 +31,6 @@
 
 <style lang="scss">
   h2 {
-    display: inline-block;
-    font-family: "Poiret One", serif;
-    text-transform: uppercase;
-    font-size: 55px;
-    margin: 0 0 10px;
-
     input {
       font-family: "Poiret One", serif;
       text-transform: uppercase;
@@ -82,14 +77,6 @@
 
   a:focus, a:active {
     background-color: var(--linen-darkest);
-  }
-
-  label {
-    font-family: "Chivo Mono", monospace;
-    font-style: italic;
-    font-weight: 100;
-    font-size: 17px;
-    letter-spacing: -1px;
   }
 
   #nameInput {
