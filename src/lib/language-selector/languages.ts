@@ -1,4 +1,5 @@
 export const en = {
+    "inProgress": "Work in progress...",
     "hello": {
         "hello": "Hi",
         "namePlaceholder": "Your name",
@@ -13,6 +14,7 @@ export const en = {
 }
 
 export const de = {
+    "inProgress": "Noch in arbeit...",
     "hello": {
         "hello": "Hallo",
         "namePlaceholder": "Dein Name",

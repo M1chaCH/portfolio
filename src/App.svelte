@@ -4,8 +4,11 @@
   import Welcome from "./lib/content/Welcome.svelte";
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import {currentLanguage} from "./lib/stores";
 
   gsap.registerPlugin(ScrollTrigger);
+
+  $: t_inProgress = $currentLanguage["inProgress"];
 </script>
 
 <LanguageSelector />
@@ -15,6 +18,9 @@
 
     <div id="content">
         <Welcome />
+        <div style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <h1>{t_inProgress}</h1>
+        </div>
     </div>
 </main>
 
