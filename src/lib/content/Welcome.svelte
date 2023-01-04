@@ -19,7 +19,6 @@
     onMount(() => {
         gsap.from(".content", {
             x: -75,
-            duration: 0.75,
             opacity: 0,
             scrollTrigger: {
                 trigger: ".container",
@@ -36,7 +35,6 @@
             right: 0,
             backgroundPositionY: getBackgroundOffsetY,
             width: "100%",
-            duration: 2,
             borderRadius: "0px",
             scrollTrigger: {
                 trigger: ".container",
@@ -48,16 +46,15 @@
     });
 </script>
 
-<div class="container">
+<section id="welcome" class="container">
     <div class="content">
         <h3>{t_welcome} {$username} {t_to}</h3>
         <h1 id="title">{t_my} <span>Portfolio</span></h1>
         <label for="title">-- Micha Schweizer</label>
     </div>
 
-    <div class="image-container">
-    </div>
-</div>
+    <picture class="image-container"></picture>
+</section>
 
 <style lang="scss">
   .container {

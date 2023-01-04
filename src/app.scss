@@ -1,6 +1,11 @@
 html {
   background-color: var(--isabelline);
   scroll-behavior: smooth;
+  transition: background-color 500ms ease-out;
+}
+
+.dark {
+  background-color: var(--black) !important;
 }
 
 body {
@@ -68,6 +73,44 @@ label {
   font-weight: 100;
   font-size: 17px;
   letter-spacing: -1px;
+}
+
+p {
+  font-family: "Chivo Mono", monospace;
+  font-weight: normal;
+  font-size: 17px;
+}
+
+.action-link {
+  font-family: "Chivo Mono", monospace;
+  font-weight: 100;
+  font-size: 18px;
+
+  margin-top: 35px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  align-self: flex-end;
+  padding: 8px;
+  cursor: pointer;
+
+  background-color: var(--linen);
+  border: var(--black) 2px solid;
+  border-radius: 5px;
+
+  text-decoration: none;
+  color: var(--black);
+
+  transition: all 200ms ease-out;
+}
+
+.action-link:hover {
+  background-color: var(--linen-darker);
+}
+
+.action-link:focus, .action-link:active {
+  background-color: var(--linen-darkest);
 }
 
 @media (max-width: 500px) {

@@ -24,7 +24,7 @@
     });
 </script>
 
-<div id="nameInput">
+<section id="name-input">
     <div>
         <h2 id="greetings" class="anim">
             {t_hello}
@@ -32,7 +32,7 @@
         </h2>
         <label for="greetings" class="anim">{t_nameReason}</label>
         <div class="anim">
-            <a href="#content" on:click={showContent}>
+            <a href="#welcome" on:click={showContent} class="action-link">
                 <span class="material-symbols-rounded" >south</span>
                 <span>{t_start}</span>
                 <span class="material-symbols-rounded">south</span>
@@ -40,7 +40,7 @@
         </div>
 
     </div>
-</div>
+</section>
 
 <style lang="scss">
   h2 {
@@ -63,39 +63,7 @@
     }
   }
 
-  a {
-    font-family: "Chivo Mono", monospace;
-    font-weight: 100;
-    font-size: 18px;
-
-    margin-top: 35px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: fit-content;
-    align-self: flex-end;
-    padding: 8px;
-    cursor: pointer;
-
-    background-color: var(--linen);
-    border: var(--black) 2px solid;
-    border-radius: 5px;
-
-    text-decoration: none;
-    color: var(--black);
-
-    transition: all 200ms ease-out;
-  }
-
-  a:hover {
-    background-color: var(--linen-darker);
-  }
-
-  a:focus, a:active {
-    background-color: var(--linen-darkest);
-  }
-
-  #nameInput {
+  #name-input {
     display: flex;
     height: 100vh;
     flex-direction: column;

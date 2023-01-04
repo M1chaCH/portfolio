@@ -5,7 +5,9 @@
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import {currentLanguage} from "./lib/stores";
+  import CurrentDoing from "./lib/content/CurrentDoing.svelte";
 
+  // noinspection TypeScriptUnresolvedFunction
   gsap.registerPlugin(ScrollTrigger);
 
   $: t_inProgress = $currentLanguage["inProgress"];
@@ -18,6 +20,7 @@
 
     <div id="content">
         <Welcome />
+        <CurrentDoing />
         <div style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
             <h1>{t_inProgress}</h1>
         </div>
