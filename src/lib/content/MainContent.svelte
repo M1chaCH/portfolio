@@ -5,9 +5,10 @@
 
     $: nameFilling = $username ? " " + $username + " " : " ";
 
-    $: t_question = $currentLanguage["currentDoing"]["question"];
-    $: t_answer = $currentLanguage["currentDoing"]["answer"];
-    $: t_action = $currentLanguage["currentDoing"]["action"].replace("{}", nameFilling);
+    $: t_title = $currentLanguage["career"]["title"];
+    $: t_body = $currentLanguage["career"]["body"];
+    $: t_body2 = $currentLanguage["career"]["body2"];
+    $: t_action = $currentLanguage["career"]["action"].replace("{}", nameFilling);
     $: t_contact = $currentLanguage["contact"];
     $: t_contactSubject = $currentLanguage["contactSubject"];
 
@@ -72,43 +73,54 @@
     <div class="overview-container">
         <section class="overview">
             <div id="formal-image" class="float-down"></div>
-            <h2 class="float-down">Micha Schweizer</h2>
-            <ul id="table-of-contents">
-                <li class="float-down">
-                    <a href="#career">
-                        <span class="material-symbols-rounded">code</span>
-                        <span>Career</span>
-                    </a>
-                </li>
-                <li class="float-down">
-                    <a href="#career">
-                        <span class="material-symbols-rounded">code</span>
-                        <span>Projects</span>
-                    </a>
-                </li>
-                <li class="float-down">
-                    <a href="#career">
-                        <span class="material-symbols-rounded">code</span>
-                        <span>Mountainbiker</span>
-                    </a>
-                </li>
-            </ul>
+            <div>
+                <h2 class="float-down">Micha Schweizer</h2>
+                <ul id="table-of-contents">
+                    <li class="float-down">
+                        <a href="#career">
+                            <span class="material-symbols-rounded">code</span>
+                            <span>{t_title}</span>
+                        </a>
+                    </li>
+                    <li class="float-down">
+                        <a href="#career">
+                            <span class="material-symbols-rounded">code</span>
+                            <span>Projects</span>
+                        </a>
+                    </li>
+                    <li class="float-down">
+                        <a href="#career">
+                            <span class="material-symbols-rounded">code</span>
+                            <span>Mountainbiker</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
         </section>
     </div>
     <section class="detail-texts">
         <div class="pin-container" id="career">
             <div class="pin-element">
-                <h2>{t_question}</h2>
+                <h2 class="pin-content">{t_title}</h2>
             </div>
         </div>
         <div class="pin-container">
             <div class="pin-element">
-                <p>{t_answer}</p>
+                <p class="pin-content">{t_body}</p>
             </div>
         </div>
         <div class="pin-container">
             <div class="pin-element">
-                <p>{t_action}</p>
+                <p class="pin-content">{t_body2}</p>
+            </div>
+        </div>
+        <div class="pin-container">
+            <div class="pin-element">
+                <div class="pin-content">
+                    <p style="margin-bottom: 20px">{t_action}</p>
+                    <a class="action-link" href="mailto: micha_ch@outlook.com?subject={t_contactSubject}">{t_contact}</a>
+                </div>
             </div>
         </div>
     </section>
@@ -173,7 +185,7 @@
               text-decoration: none;
 
               color: var(--black);
-              background-image: linear-gradient(to left, var(--champagne-pink) 50%, transparent 50%);
+              background-image: linear-gradient(to left, var(--desert-sand) 50%, transparent 50%);
               background-size: 200% 100%;
               background-position: 0;
 
@@ -205,8 +217,9 @@
           align-items: center;
           flex-flow: column nowrap;
 
-          * {
+          .pin-content {
             margin: 0 10vw;
+            width: clamp(200px, 100%, 500px);
             text-align: justify;
           }
         }
