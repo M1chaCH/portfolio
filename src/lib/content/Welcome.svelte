@@ -50,7 +50,6 @@
     <div class="content">
         <h3>{t_welcome} {$username} {t_to}</h3>
         <h1 id="title">{t_my} <span>Portfolio</span></h1>
-        <label for="title">-- Micha Schweizer</label>
     </div>
 
     <picture class="image-container"></picture>

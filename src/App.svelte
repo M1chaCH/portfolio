@@ -5,7 +5,7 @@
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import {currentLanguage} from "./lib/stores";
-  import CurrentDoing from "./lib/content/CurrentDoing.svelte";
+  import MainContent from "./lib/content/MainContent.svelte";
 
   // noinspection TypeScriptUnresolvedFunction
   gsap.registerPlugin(ScrollTrigger);
@@ -20,7 +20,7 @@
 
     <div id="content">
         <Welcome />
-        <CurrentDoing />
+        <MainContent />
         <div style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
             <h1>{t_inProgress}</h1>
         </div>

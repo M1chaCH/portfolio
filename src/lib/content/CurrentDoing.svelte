@@ -11,14 +11,30 @@
     $: t_contact = $currentLanguage["contact"];
     $: t_contactSubject = $currentLanguage["contactSubject"];
 
+    const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
     const removeDark = () => document.getElementsByTagName("html")[0].classList.remove("dark");
     const addDark = () => document.getElementsByTagName("html")[0].classList.add("dark");
+    const loadYOffsetDestination = () => {
+        const yString = window.getComputedStyle(document.getElementById("desk-image")).getPropertyValue("--y-offset");
+        let y: number = parseInt(yString.replace("px", ""));
+
+        if(window.innerWidth > 800)
+            y += 300
+        else if (window.innerWidth > 500)
+            y += 150
+        else
+            y += 50
+
+        console.log(y + "px")
+        return y + "px";
+    }
 
     onMount(() => {
-        gsap.to(".desk-image", {
-            backgroundPositionY: "-300px",
+
+        gsap.to("#desk-image", {
+            backgroundPositionY: loadYOffsetDestination,
             scrollTrigger: {
-                trigger: ".desk-image",
+                trigger: "#desk-image",
                 start: "top bottom",
                 end: "bottom top",
                 play: "reset",
@@ -66,7 +82,7 @@
         </div>
 
     </div>
-    <picture class="desk-image"></picture>
+    <picture id="desk-image"></picture>
 </section>
 
 <style lang="scss">
@@ -92,7 +108,7 @@
         display: grid;
         grid-template-columns: clamp(200px, 100%, 400px) clamp(200px, 100%, 400px);
         grid-template-rows: 100%;
-        height: 100%;
+        height: fit-content;
         justify-content: space-around;
         background-color: var(--black);
 
@@ -109,7 +125,7 @@
       h1 {
         z-index: 10;
         color: var(--isabelline);
-        margin-left: 2vw;
+        padding-left: 2vw;
       }
 
       a {
@@ -137,7 +153,9 @@
       background-image: url("images/portrait.jpg");
     }
 
-    .desk-image {
+    #desk-image {
+      --y-offset: -600px;
+
       border-radius: 30px 30px 0 0;
       position: absolute;
       top: 200vh;
@@ -146,11 +164,76 @@
       background-image: url("images/desk.jpg");
       background-size: 100%;
       background-position-x: 0;
-      background-position-y: -600px;
+      background-position-y: var(--y-offset);
       background-repeat: no-repeat;
 
       width: 100%;
       height: 500px;
+    }
+  }
+
+  @media (max-width: 1300px) {
+    .current-container {
+      .current-content {
+        padding-top: calc(40vw - 100px);
+      }
+
+      #desk-image {
+        --y-offset: -450px;
+        min-height: 200px;
+        height: 40vw;
+      }
+    }
+  }
+
+  @media (max-width: 960px) {
+    .current-container {
+      .current-content {
+        padding-top: 300px;
+
+        .current-texts {
+          grid-template-columns: clamp(200px, 100%, 400px);
+          grid-template-rows: 50% 50%;
+          gap: 100px;
+        }
+      }
+
+      #desk-image {
+        --y-offset: -450px;
+        height: 30vw;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .current-container {
+      .current-content {
+        padding-top: 200px;
+      }
+
+      #desk-image {
+        --y-offset: -250px;
+      }
+    }
+  }
+
+  @media (max-width: 550px) {
+    .current-container {
+      #desk-image {
+        --y-offset: -150px;
+      }
+    }
+  }
+
+  @media (max-width: 400px) {
+    .current-container {
+      .current-content {
+        padding-top: 150px;
+      }
+
+      #desk-image {
+        --y-offset: -100px;
+      }
     }
   }
 </style>
