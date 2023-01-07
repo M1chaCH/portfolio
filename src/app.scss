@@ -20,6 +20,11 @@ body {
   }
 }
 
+.hide-overflow {
+  height: 100vh !important;
+  overflow: hidden;
+}
+
 ::selection {
   background: var(--pale-silver);
 }

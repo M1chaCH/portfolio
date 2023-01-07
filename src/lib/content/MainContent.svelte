@@ -5,6 +5,7 @@
 
     $: nameFilling = $username ? " " + $username + " " : " ";
 
+    $: t_welcome = $currentLanguage["welcome"]["welcome"];
     $: t_title = $currentLanguage["career"]["title"];
     $: t_body = $currentLanguage["career"]["body"];
     $: t_body2 = $currentLanguage["career"]["body2"];
@@ -12,31 +13,71 @@
     $: t_contact = $currentLanguage["contact"];
     $: t_contactSubject = $currentLanguage["contactSubject"];
 
-    onMount(() => {
-        gsap.from(".overview", {
-            scrollTrigger: {
-                trigger: ".overview-container",
-                start: "top top",
-                end: "bottom bottom",
-                pin: true,
-                scrub: true,
-                toggleActions: "restart",
-                pinSpacing: false,
-            }
-        });
+    let openMenuAnim;
+    let open: boolean = false;
+    const toggleMenu = () => {
+        document.getElementsByClassName("burger-icon")[0].classList.toggle("burger-icon-closed");
+        document.getElementsByTagName("body")[0].classList.toggle("hide-overflow");
 
-        gsap.from(".float-down", {
-            y: -50,
-            opacity: 0,
-            stagger: 0.1,
-            scrollTrigger: {
-                trigger: ".overview",
-                start: "top 70%",
-                end: "top -10%",
-                scrub: true,
-                toggleActions: "restart",
-            }
-        });
+        if(open) openMenuAnim.reverse();
+        else openMenuAnim.restart();
+        open = !open;
+    };
+
+    // makes sure that the burger is only rendered when needed.
+    let shown: boolean = false;
+    const toggleBurgerDisplay = () => {
+        if(!shown) {
+            document.getElementsByClassName("burger")[0].classList.toggle("burger-hidden");
+            shown = true;
+        }
+    };
+
+    onMount(() => {
+        if(window.innerWidth >= 1000) {
+            gsap.from(".overview", {
+                scrollTrigger: {
+                    trigger: ".overview-container",
+                    start: "top top",
+                    end: "bottom bottom",
+                    pin: true,
+                    scrub: true,
+                    toggleActions: "restart",
+                    pinSpacing: false,
+                }
+            });
+
+            gsap.from(".float-down", {
+                y: -50,
+                opacity: 0,
+                stagger: 0.1,
+                scrollTrigger: {
+                    trigger: ".overview",
+                    start: "top 70%",
+                    end: "top -10%",
+                    scrub: true,
+                    toggleActions: "restart",
+                }
+            });
+        } else {
+            openMenuAnim = gsap.to(".overview", {
+                left: 0,
+                paused: true,
+                duration: 0.4,
+            });
+
+            gsap.from(".burger", {
+                right: -70,
+                opacity: 0,
+                scrollTrigger: {
+                    trigger: ".pin-container",
+                    scrub: true,
+                    start: "top 20%",
+                    end: "top top",
+                    onEnter: toggleBurgerDisplay,
+                }
+            });
+        }
 
         const containers = Array.from(document.getElementsByClassName("pin-container"));
         containers.forEach(container => {
@@ -77,19 +118,25 @@
                 <h2 class="float-down">Micha Schweizer</h2>
                 <ul id="table-of-contents">
                     <li class="float-down">
-                        <a href="#career">
+                        <a href="#welcome" on:click={toggleMenu}>
+                            <span class="material-symbols-rounded">code</span>
+                            <span>{t_welcome}</span>
+                        </a>
+                    </li>
+                    <li class="float-down">
+                        <a href="#career" on:click={toggleMenu}>
                             <span class="material-symbols-rounded">code</span>
                             <span>{t_title}</span>
                         </a>
                     </li>
                     <li class="float-down">
-                        <a href="#career">
+                        <a href="#career" on:click={toggleMenu}>
                             <span class="material-symbols-rounded">code</span>
                             <span>Projects</span>
                         </a>
                     </li>
                     <li class="float-down">
-                        <a href="#career">
+                        <a href="#career" on:click={toggleMenu}>
                             <span class="material-symbols-rounded">code</span>
                             <span>Mountainbiker</span>
                         </a>
@@ -125,6 +172,9 @@
         </div>
     </section>
 </div>
+<div class="burger burger-hidden" on:click={toggleMenu}>
+    <div class="burger-icon burger-icon-closed"></div>
+</div>
 
 <style lang="scss">
   .content-root {
@@ -135,6 +185,7 @@
 
     .overview-container {
       height: 100%;
+      margin-left: 3vw;
 
       .overview {
         height: 100vh;
@@ -151,12 +202,17 @@
         #formal-image {
           rotate: 180deg;
           opacity: 0.8;
-          height: 300px;
-          width: 300px;
           margin-bottom: 20px;
 
+          min-height: 200px;
+          height: 23vw;
+          max-height: 350px;
+          min-width: 200px;
+          width: 23vw;
+          max-width: 350px;
+
           background-size: 170%;
-          background-position-x: -110px;
+          background-position-x: -110px; // TODO cut the final image so that it does not need this.
           background-position-y: -50px;
           background-repeat: no-repeat;
           border-radius: 50%;
@@ -224,6 +280,63 @@
           }
         }
       }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .content-root {
+      grid-template-columns: 0 100%;
+
+      .overview-container {
+        overflow-x: hidden;
+
+        .overview {
+          z-index: 100;
+          position: fixed;
+          top: 0;
+          left: 100vw;
+          bottom: 0;
+
+          background-color: var(--isabelline);
+          width: 100vw;
+        }
+      }
+
+      .detail-texts {
+        margin: 0 20px;
+      }
+    }
+
+    .burger {
+      display: inline-block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 999;
+
+      margin: 15px;
+      cursor: pointer;
+
+      height: 60px;
+      width: 60px;
+
+      .burger-icon {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        background-image: url("ch-burger.svg");
+
+        transition: all 400ms ease-out;
+        transform: scale(-1, 1);
+      }
+
+      .burger-icon-closed {
+        transform: scale(1, 1) !important;
+      }
+    }
+
+    .burger-hidden {
+      display: none;
     }
   }
 </style>
