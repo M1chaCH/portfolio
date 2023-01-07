@@ -80,10 +80,6 @@
         transform: translate(-4vw);
         margin: 0;
       }
-
-      label {
-        transform: translateX(4vw);
-      }
     }
 
     .image-container {
@@ -95,7 +91,7 @@
       width: 500px;
       border-radius: 50%;
 
-      background-image: url("images/welcome-image.jpg");
+      background-image: url("../images/welcome-image.jpg");
       background-size: 110%;
       background-position-x: -25px;
       background-position-y: -2px;
