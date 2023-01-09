@@ -86,6 +86,7 @@
                     trigger: container,
                     start: "top top",
                     end: "bottom bottom",
+                    anticipatePin: 1,
                     pin: true,
                     scrub: true,
                     toggleActions: "restart",
@@ -216,7 +217,7 @@
           background-position-y: -50px;
           background-repeat: no-repeat;
           border-radius: 50%;
-          background-image: url("../images/formal-portrait.jpg");
+          background-image: url("/assets/images/formal-portrait.jpg");
         }
 
         #table-of-contents {

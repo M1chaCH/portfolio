@@ -91,7 +91,7 @@
       width: 500px;
       border-radius: 50%;
 
-      background-image: url("../images/welcome-image.jpg");
+      background-image: url("/assets/images/welcome-image.jpg");
       background-size: 110%;
       background-position-x: -25px;
       background-position-y: -2px;
