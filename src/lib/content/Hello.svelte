@@ -8,13 +8,24 @@
     $: t_nameReason = $currentLanguage["hello"]["nameReason"];
     $: t_start = $currentLanguage["hello"]["continue"];
 
+    username.set(localStorage.getItem("username"));
+
     let name: string = $username;
     const showContent = () => {
         username.set(name)
+        localStorage.setItem("username", name);
         document.getElementById("page-main").classList.remove("hidden");
     };
 
+    const keyPressed = (event) => {
+        if(event.keyCode === 13)
+            document.getElementById("welcome-link").click();
+    }
+
     onMount(() => {
+        if($username)
+            showContent();
+
         gsap.from(".anim", {
             x: -75,
             duration: 0.75,
@@ -24,15 +35,15 @@
     });
 </script>
 
-<section id="name-input">
+<section id="hello">
     <div>
         <h2 id="greetings" class="anim">
             {t_hello}
-            <input type="text" class="anim" placeholder={t_namePlaceholder} bind:value={name}/>
+            <input type="text" class="anim" placeholder={t_namePlaceholder} bind:value={name} on:keypress={keyPressed}/>
         </h2>
         <label for="greetings" class="anim">{t_nameReason}</label>
         <div class="anim">
-            <a href="#welcome" on:click={showContent} class="action-link">
+            <a id="welcome-link" href="#welcome" on:click={showContent} class="action-link">
                 <span class="material-symbols-rounded" >south</span>
                 <span>{t_start}</span>
                 <span class="material-symbols-rounded">south</span>
@@ -63,7 +74,7 @@
     }
   }
 
-  #name-input {
+  #hello {
     display: flex;
     height: 100vh;
     flex-direction: column;

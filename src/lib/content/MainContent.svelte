@@ -15,17 +15,20 @@
 
     let openMenuAnim;
     let open: boolean = false;
-    const toggleMenu = () => {
-        document.getElementsByClassName("burger-icon")[0].classList.toggle("burger-icon-closed");
-        document.getElementsByTagName("body")[0].classList.toggle("hide-overflow");
-
-        if(open) openMenuAnim.reverse();
-        else openMenuAnim.restart();
-        open = !open;
-    };
-
     // makes sure that the burger is only rendered when needed.
     let shown: boolean = false;
+
+    const toggleMenu = () => {
+        if(shown) {
+            document.getElementsByClassName("burger-icon")[0].classList.toggle("burger-icon-closed");
+            document.getElementsByTagName("body")[0].classList.toggle("hide-overflow");
+
+            if(open) openMenuAnim.reverse();
+            else openMenuAnim.restart();
+            open = !open;
+        }
+    };
+
     const toggleBurgerDisplay = () => {
         if(!shown) {
             document.getElementsByClassName("burger")[0].classList.toggle("burger-hidden");
@@ -325,7 +328,7 @@
         width: 100%;
         height: 100%;
         padding: 0;
-        background-image: url("ch-burger.svg");
+        background-image: url("/assets/ch-burger.svg");
 
         transition: all 400ms ease-out;
         transform: scale(-1, 1);

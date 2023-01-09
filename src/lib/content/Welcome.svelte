@@ -86,6 +86,7 @@
       position: absolute;
       top: calc(100vh + 150px);
       right: 200px;
+      will-change: right, left, top;
 
       height: 500px;
       width: 500px;

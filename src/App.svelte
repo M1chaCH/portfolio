@@ -6,11 +6,17 @@
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import {currentLanguage} from "./lib/stores";
   import MainContent from "./lib/content/MainContent.svelte";
+  import {onMount} from "svelte";
 
   // noinspection TypeScriptUnresolvedFunction
   gsap.registerPlugin(ScrollTrigger);
 
   $: t_inProgress = $currentLanguage["inProgress"];
+
+  onMount(() => {
+      if(localStorage.getItem("username")) window.location.href = "#welcome";
+      else window.location.href = "#hello";
+  });
 </script>
 
 <LanguageSelector />
@@ -30,7 +36,7 @@
 <style lang="scss">
   main {
     position: relative;
-    overflow-y: hidden;
+    overflow: hidden;
   }
 
   .hidden {
