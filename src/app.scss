@@ -1,23 +1,11 @@
 html {
-  background-color: var(--isabelline);
+  background-color: var(--primary-color);
   scroll-behavior: smooth;
   transition: background-color 500ms ease-out;
 }
 
-.dark {
-  background-color: var(--black) !important;
-}
-
 body {
   margin: 0;
-  color: var(--black);
-
-  #app {
-    display: grid;
-    grid-template-columns: clamp(350px, 100%, 1400px);
-    outline: black 1px solid;
-    justify-content: center;
-  }
 }
 
 .hide-overflow {
@@ -26,106 +14,119 @@ body {
 }
 
 ::selection {
-  background: var(--pale-silver);
+  background: var(--secondary-color);
 }
 
 :root {
-  // COLORS
-  // visualisation: https://coolors.co/edede9-d6ccc2-f5ebe0-ebd7c1-e6cdb2-e3d5ca-d5bfaf-c09f87-d5bdaf-0d0907
-  --isabelline: #EDEDE9;
+  // color reference https://coolors.co/090a0b-44454f-f4f4f6-e4e3dd-cdcbc1-adaa99-787768-4f4e44-37372f
+  --black: #090A0B;
+  --primary-color: #44454F;
 
-  --pale-silver: #D6CCC2;
+  --accent-color-lighter: #E4E3DD;
+  --accent-color: #CDCBC1;
+  --accent-color-darker: #ADAA99;
 
-  --linen: #F5EBE0;
-  --linen-darker: #EBD7C1;
-  --linen-darkest: #E6CDB2;
+  --secondary-color-lighter: #787768;
+  --secondary-color: #4F4E44;
+  --secondary-color-darker: #37372F;
+  --white: #F4F4F6;
 
-  --champagne-pink: #E3D5CA;
-  --champagne-pink-darker: #D5BFAF;
-  --champagne-pink-darkest: #C09F87;
-
-  --desert-sand: #D5BDAF;
-  --black: #0D0907;
+  font-family: "Exo 2", sans-serif;
+  color: var(--white);
 }
 
 h1 {
-  display: inline-block;
-  font-family: "Poiret One", serif;
   text-transform: uppercase;
-  font-size: 80px;
-  margin: 0 0 20px;
+  font-size: clamp(10px, 17vw, 150px);
+  font-weight: 900;
+
+  margin: 0;
 }
 
 h2 {
-  display: inline-block;
-  font-family: "Poiret One", serif;
-  text-transform: uppercase;
-  font-size: 55px;
-  margin: 0 0 10px;
+  font-size: 70px;
+  font-weight: 700;
+
+  margin: 0;
 }
 
 h3 {
-  display: inline-block;
-  font-family: "Poiret One", serif;
-  text-transform: uppercase;
-  font-size: 35px;
-  margin: 0 0 5px;
-}
+  font-size: 50px;
+  font-weight: 500;
 
-label {
-  font-family: "Chivo Mono", monospace;
-  font-style: italic;
-  font-weight: 100;
-  font-size: 17px;
-  letter-spacing: -1px;
+  margin: 0;
 }
 
 p {
-  font-family: "Chivo Mono", monospace;
-  font-weight: normal;
-  font-size: 17px;
+  line-height: 107%;
+  font-size: clamp(10px, 5vw, 40px);
+  letter-spacing: 0;
+  text-align: justify;
+  font-weight: 300;
+
+  margin: 0;
 }
 
 .action-link {
-  font-family: "Chivo Mono", monospace;
-  font-weight: 100;
-  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 22px;
 
-  margin-top: 35px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-around;
+  gap: 20px;
   width: fit-content;
-  align-self: flex-end;
-  padding: 8px;
+  padding: 20px;
   cursor: pointer;
+  box-sizing: border-box;
 
-  background-color: var(--linen);
-  border: var(--black) 2px solid;
-  border-radius: 5px;
+  background-color: var(--secondary-color);
+  border-radius: 100px;
+  border: 2px solid var(--white);
 
   text-decoration: none;
-  color: var(--black);
+  color: var(--white);
 
   transition: all 200ms ease-out;
 }
 
 .action-link:hover {
-  background-color: var(--linen-darker);
+  background-color: var(--secondary-color-darker);
+  scale: 1.03;
+  box-shadow: 0 -8px 15px var(--black);
+  transform: translateY(8px);
 }
 
-.action-link:focus, .action-link:active {
-  background-color: var(--linen-darkest);
+input {
+  box-sizing: border-box;
+  width: 100%;
+  height: clamp(70px, 20vw, 160px);
+
+  border-radius: 80px;
+  outline: none;
+  border: none;
+  padding: 0 5%;
+
+  font-family: "Exo 2", sans-serif;
+  font-size: clamp(10px, 9vw, 80px);
+  font-weight: 700;
+  color: var(--secondary-color);
+  background-color: var(--accent-color);
+
+  transition: all 200ms ease-out;
 }
 
-@media (max-width: 500px) {
-  h1 {
-    font-size: 70px;
-  }
-  h2 {
-    font-size: 42px;
-  }
-  h3 {
-    font-size: 28px;
-  }
+input:hover {
+  background-color: var(--accent-color-darker);
+  box-shadow: 0 12px 15px var(--black);
+  transform: translateY(-12px);
+}
+
+input:focus {
+  background-color: var(--accent-color-darker);
+
+  box-shadow: 0 8px 15px var(--black);
+  transform: translateY(-8px);
+  outline: solid 5px var(--white);
 }

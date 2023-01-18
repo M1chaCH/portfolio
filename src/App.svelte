@@ -1,11 +1,9 @@
 <script lang="ts">
   import LanguageSelector  from "./lib/language-selector/LanguageSelector.svelte"
   import Hello from "./lib/content/Hello.svelte"
-  import Welcome from "./lib/content/Welcome.svelte";
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import {currentLanguage} from "./lib/stores";
-  import MainContent from "./lib/content/MainContent.svelte";
   import {onMount} from "svelte";
 
   // noinspection TypeScriptUnresolvedFunction
@@ -14,33 +12,27 @@
   $: t_inProgress = $currentLanguage["inProgress"];
 
   onMount(() => {
-      if(localStorage.getItem("username")) window.location.href = "#welcome";
-      else window.location.href = "#hello";
+     if(localStorage.getItem("username")) {
+         window.location.href = "#overview";
+         document.getElementsByTagName("main").item(0).classList.remove("hide-overflow");
+     }
+     else window.location.href = "#hello";
   });
 </script>
 
 <LanguageSelector />
 
-<main id="page-main" class="hidden">
+<main id="page-main" class="hide-overflow">
     <Hello />
 
-    <div id="content">
-        <Welcome />
-        <MainContent />
-        <div style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <h1>{t_inProgress}</h1>
-        </div>
+    <div id="overview" style="display: flex; justify-content: center; align-items: center; height: 100vh; max-width: 1400px; margin: 0 auto">
+        <h1 style="text-align: center">{t_inProgress}</h1>
     </div>
 </main>
 
 <style lang="scss">
   main {
     position: relative;
-    overflow: hidden;
-  }
-
-  .hidden {
-    height: 100vh;
     overflow: hidden;
   }
 </style>
