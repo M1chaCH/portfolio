@@ -5,11 +5,17 @@
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import {currentLanguage} from "./lib/stores";
   import {onMount} from "svelte";
+  import Overview from "./lib/content/Overview.svelte";
+  import OverviewMobile from "./lib/content/OverviewMobile.svelte";
+  import MobileMenuWrapper from "./lib/menu/MobileMenuWrapper.svelte";
 
   // noinspection TypeScriptUnresolvedFunction
   gsap.registerPlugin(ScrollTrigger);
 
+  const MOBILE_BREAKPOINT: number = 700;
+
   $: t_inProgress = $currentLanguage["inProgress"];
+  let innerWidth = 0;
 
   onMount(() => {
      if(localStorage.getItem("username")) {
@@ -20,12 +26,19 @@
   });
 </script>
 
+<svelte:window bind:innerWidth />
 <LanguageSelector />
 
 <main id="page-main" class="hide-overflow">
     <Hello />
+    {#if innerWidth > MOBILE_BREAKPOINT}
+        <Overview />
+    {:else}
+        <OverviewMobile />
+        <MobileMenuWrapper />
+    {/if}
 
-    <div id="overview" style="display: flex; justify-content: center; align-items: center; height: 100vh; max-width: 1400px; margin: 0 auto">
+    <div id="in-progress" style="display: flex; justify-content: center; align-items: center; height: 100vh; max-width: 1400px; margin: 0 auto">
         <h1 style="text-align: center">{t_inProgress}</h1>
     </div>
 </main>
@@ -34,5 +47,9 @@
   main {
     position: relative;
     overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
   }
 </style>
