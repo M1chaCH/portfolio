@@ -14,18 +14,17 @@
 </section>
 
 <style lang="scss">
-  #overview { // FIXME, this thing has overflow-y for some reason.
+  #overview {
     height: 100vh;
     width: 100vw;
 
     box-sizing: border-box;
     position: relative;
-    overflow-x: hidden;
 
     .text-container {
       margin: 0 30px;
       position: absolute;
-      bottom: 0;
+      bottom: 10px;
 
       h2 {
         text-transform: uppercase;

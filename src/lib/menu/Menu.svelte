@@ -1,5 +1,6 @@
 <script lang="ts">
     import {currentLanguage} from "../stores";
+    import {createEventDispatcher} from "svelte";
 
     $: t_menuWelcome = $currentLanguage["menu"]["welcome"];
     $: t_menuOverview = $currentLanguage["menu"]["overview"];
@@ -7,43 +8,46 @@
     $: t_menuProjects = $currentLanguage["menu"]["projects"];
     $: t_menuHobbies = $currentLanguage["menu"]["hobbies"];
     $: t_menuSkills = $currentLanguage["menu"]["skills"];
+
+    const dispatch = createEventDispatcher();
+    const menuPointClicked = (url) => dispatch("itemSelected", { item: url });
 </script>
 
 <nav>
     <div class="menu-grid">
         <div class="menu-blob-container">
             <span class="menu-label">{t_menuWelcome}</span>
-            <a class="menu-blob" href="#hello">
+            <a class="menu-blob" href="#hello" on:click={() => menuPointClicked("hello")}>
                 <span class="material-symbols-rounded">waving_hand</span>
             </a>
         </div>
         <div class="menu-blob-container current">
             <span class="menu-label">{t_menuOverview}</span>
-            <a class="menu-blob" href="#overview">
+            <a class="menu-blob" href="#overview" on:click={() => menuPointClicked("overview")}>
                 <span class="material-symbols-rounded">roofing</span>
             </a>
         </div>
         <div class="menu-blob-container">
             <span class="menu-label">{t_menuCareer}</span>
-            <a class="menu-blob" href="#career">
+            <a class="menu-blob" href="#career" on:click={() => menuPointClicked("career")}>
                 <span class="material-symbols-rounded">business_chip</span>
             </a>
         </div>
         <div class="menu-blob-container">
             <span class="menu-label">{t_menuHobbies}</span>
-            <a class="menu-blob" href="#hobbiew">
+            <a class="menu-blob" href="#hobbies" on:click={() => menuPointClicked("hobbies")}>
                 <span class="material-symbols-rounded">directions_bike</span>
             </a>
         </div>
         <div class="menu-blob-container">
             <span class="menu-label">{t_menuProjects}</span>
-            <a class="menu-blob" href="#projects">
+            <a class="menu-blob" href="#projects" on:click={() => menuPointClicked("projects")}>
                 <span class="material-symbols-rounded">dashboard</span>
             </a>
         </div>
         <div class="menu-blob-container">
             <span class="menu-label">{t_menuSkills}</span>
-            <a class="menu-blob" href="#skills">
+            <a class="menu-blob" href="#skills" on:click={() => menuPointClicked("skills")}>
                 <span class="material-symbols-rounded">cognition</span>
             </a>
         </div>
@@ -156,7 +160,7 @@
         grid-template-columns: 50% 50%;
 
         .menu-blob-container:nth-child(even) {
-          transform: translateY(40px);
+          transform: translateY(60px) !important;
         }
       }
     }
