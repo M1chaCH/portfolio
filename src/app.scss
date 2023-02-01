@@ -83,7 +83,7 @@ p {
 
   background-color: var(--secondary-color);
   border-radius: 100px;
-  border: 2px solid var(--white);
+  border: 1px solid var(--white);
 
   text-decoration: none;
   color: var(--white);
@@ -94,8 +94,7 @@ p {
 .action-link:hover {
   background-color: var(--secondary-color-darker);
   scale: 1.03;
-  box-shadow: 0 -8px 15px var(--black);
-  transform: translateY(8px);
+  border-radius: 20px;
 }
 
 input {
@@ -119,14 +118,13 @@ input {
 
 input:hover {
   background-color: var(--accent-color-darker);
-  box-shadow: 0 12px 15px var(--black);
-  transform: translateY(-12px);
+  border-radius: 50px;
 }
 
 input:focus {
   background-color: var(--accent-color-darker);
 
-  box-shadow: 0 8px 15px var(--black);
-  transform: translateY(-8px);
-  outline: solid 5px var(--white);
+  box-shadow: 0 20px 30px var(--black);
+  transform: translateY(-10px);
+  outline: solid 2px var(--white);
 }
