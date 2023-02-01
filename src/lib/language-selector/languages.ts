@@ -20,6 +20,9 @@ export const en = {
         "projects": "Projects",
         "skills": "Skills",
     },
+    "career": {
+        "career": "Career",
+    },
 }
 
 export const de = {
@@ -43,6 +46,9 @@ export const de = {
         "hobbies": "Hobbies",
         "projects": "Projekte",
         "skills": "Skills",
+    },
+    "career": {
+        "career": "Kariere",
     },
 }
 

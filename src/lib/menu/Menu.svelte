@@ -34,15 +34,15 @@
             </a>
         </div>
         <div class="menu-blob-container">
-            <span class="menu-label">{t_menuHobbies}</span>
-            <a class="menu-blob" href="#hobbies" on:click={() => menuPointClicked("hobbies")}>
-                <span class="material-symbols-rounded">directions_bike</span>
-            </a>
-        </div>
-        <div class="menu-blob-container">
             <span class="menu-label">{t_menuProjects}</span>
             <a class="menu-blob" href="#projects" on:click={() => menuPointClicked("projects")}>
                 <span class="material-symbols-rounded">dashboard</span>
+            </a>
+        </div>
+        <div class="menu-blob-container">
+            <span class="menu-label">{t_menuHobbies}</span>
+            <a class="menu-blob" href="#hobbies" on:click={() => menuPointClicked("hobbies")}>
+                <span class="material-symbols-rounded">directions_bike</span>
             </a>
         </div>
         <div class="menu-blob-container">
