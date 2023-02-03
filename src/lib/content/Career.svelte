@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<section id="career">
+<section id="career" class="part">
     career
 </section>
 

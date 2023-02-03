@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<section id="hobbies">
+<section id="hobbies" class="part">
     hobbies
 </section>
 

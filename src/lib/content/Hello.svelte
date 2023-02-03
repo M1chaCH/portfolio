@@ -43,7 +43,7 @@
     }
 </script>
 
-<section id="hello">
+<section id="hello" class="part">
     <h1>{t_welcome}</h1>
     <p>{t_nameReason}</p>
     <a id="continue-link" href="#overview" class="action-link" on:click={showMoreContent}>

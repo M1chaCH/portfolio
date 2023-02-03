@@ -1,6 +1,6 @@
 <script lang="ts">
     import {onMount} from "svelte";
-    import {currentLanguage} from "../stores";
+    import {currentLanguage, currentPart} from "../stores";
     import {getPositionForVertLink} from "./MenuService";
     import type {Links} from "./MenuService";
     import gsap from "gsap";
@@ -16,7 +16,7 @@
         for (let linkElement of document.getElementsByClassName("menu-element")) {
             const id = linkElement.getElementsByClassName("menu-circle")[0].getAttribute("href").replace("#", "");
             const yPosition = getPositionForVertLink(id as Links)
-            console.log(id, yPosition);
+
             // noinspection TypeScriptUnresolvedVariable (style actually exists)
             linkElement.style.top = yPosition - 25 + "px";
         }
@@ -33,6 +33,25 @@
                 toggleActions: "play none none reverse",
             }
         });
+
+        currentPart.subscribe(part => {
+            const elements: Element[] = Array.from(document.getElementsByClassName("menu-element"));
+
+            for (let element of elements)
+                element.classList.remove("current-element");
+
+            if(part !== "hello" && part !== "overview") {
+                const partToChange: Element | undefined = elements.find(element => element
+                    .getElementsByClassName("menu-circle")[0]
+                    .getAttribute("href")
+                    .replace("#", "") === part);
+
+                if (partToChange)
+                    partToChange.classList.add("current-element");
+                else
+                    console.error("could not find <a> element for", part);
+            }
+        })
     });
 
     const updateScrollProgress = () => {
@@ -132,6 +151,7 @@
           display: none;
           transform: translateX(-50px);
           animation: fly-in ease-out 250ms;
+          pointer-events: none;
         }
 
         .menu-circle {
