@@ -6,7 +6,7 @@
     $: t_description = $currentLanguage["overview"]["description"];
 </script>
 
-<section id="overview">
+<div id="big-overview">
     <div class="content-grid">
         <div class="text-container">
             <h2>{t_welcome} {$username}</h2>
@@ -15,10 +15,10 @@
         <img src="assets/images/welcome-image.jpg" alt="welcome-image" />
     </div>
     <LargeMainMenu />
-</section>
+</div>
 
 <style lang="scss">
-  #overview {
+  #big-overview {
     min-height: 100vh;
     max-width: 1400px;
     margin: 0 auto;

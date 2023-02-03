@@ -5,16 +5,16 @@
     $: t_description = $currentLanguage["overview"]["description"];
 </script>
 
-<section id="overview">
+<div id="mobile-overview">
     <div class="text-container">
         <h2>{t_welcome} {$username}</h2>
         <p>{t_description}</p>
     </div>
     <img src="assets/images/welcome-image.jpg" alt="welcome-image" />
-</section>
+</div>
 
 <style lang="scss">
-  #overview {
+  #mobile-overview {
     height: 100vh;
     width: 100vw;
 
