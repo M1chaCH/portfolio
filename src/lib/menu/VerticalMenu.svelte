@@ -60,11 +60,6 @@
         const scrolled = (currentScrollPosition / documentHeight) * 100;
         document.getElementById("progress").style.setProperty("--page-progress", scrolled + "%");
     }
-
-    // TODO dynamically add current link
-    // gsap scroll triggered animation for that. make it scrub
-    // gsap onEnter remove all current currents then add the current current. this can easily be done in one for loop
-    // for all menu-elements
 </script>
 
 <svelte:window on:scroll={updateScrollProgress} />
