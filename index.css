@@ -1,0 +1,213 @@
+:root,
+[color-theme="default"]{
+  --toned-gray: #4A4E4C;
+}
+
+[color-theme="dark"] {
+}
+
+::-moz-selection {
+  background-color: var(--michu-tech-accent);
+  color: var(--michu-tech-background);
+}
+  
+::selection {
+  background-color: var(--michu-tech-accent);
+  color: var(--michu-tech-background);
+}
+
+html {
+  background-color: var(--michu-tech-background);
+
+  font-family: Roboto, sans-serif;
+  color: var(--michu-tech-foreground);
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+h1,h2,h3,h4{
+  padding: 0;
+  margin: 0;
+  line-height: 95%;
+
+  box-sizing: border-box;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 74px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 54px;
+  font-weight: normal;
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 32px;
+  text-transform: uppercase;
+  width: 100%;
+  text-align: center;
+}
+
+h4 {
+  font-weight: lighter;
+  font-size: 32px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 120%;
+}
+
+.banner-container {
+  width: 100%;
+  height: 100px;
+  position: relative;
+}
+
+.banner-container .banner {
+  width: 100%;
+  height: 350px;
+  background-color: var(--michu-tech-accent);
+  transform: skew(96deg);
+
+  position: absolute;
+  left: 0;
+  top: -120px;
+  z-index: 1;
+
+  --shadow-color: color-mix(in srgb, var(--michu-tech-primary) 50%, transparent);
+  box-shadow: 50px -100px 30px 10px var(--shadow-color);
+}
+
+main {
+  width: 100vw;
+  max-width: 2500px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-flow: column;
+
+  overflow-x: hidden; /* maybe not the best way, but is an easy fix for the skew in the banner */
+}
+
+main section, footer {
+  min-height: 100svh;
+}
+
+footer {
+}
+
+main #home {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 8vw;
+}
+
+.home-content {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+#home img {
+  width: clamp(500px, 35vw, 800px);
+  height: auto;
+
+  object-fit: contain;
+  object-position: bottom;
+}
+
+.striped-text {
+  background-image: url("assets/stripes.svg");
+  background-repeat: no-repeat;
+  background-position: -10px 3.8rem;
+}
+
+.loading {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5vh;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+}
+
+.loading a img {
+  width: 26vw;
+  height: 26vw;
+}
+
+.loading p {
+  font-size: clamp(14px, 4vw, 80px);
+  margin: 0;
+}
+
+.theme-toggle {
+  position: fixed;
+  bottom: 3vw;
+  right: 3vw;
+  z-index: 2;
+
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle #theme-toggle-button {
+  all: unset;
+
+  cursor: pointer;
+  transition: all 200ms ease-out;
+}
+
+.theme-toggle #theme-toggle-button:hover {
+  scale: 1.1;
+  filter: brightness(120%);
+}
+
+.overlay-text {
+  color: var(--toned-gray);
+
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 36px;
+  letter-spacing: 0;
+  white-space: break-spaces;
+  opacity: 40%;
+}
+
+#html-text {
+  position: fixed;
+  bottom: 20px;
+  left: -10px;
+  z-index: 2;
+}
+
+#binary-text {
+  position: fixed;
+  top: 20px;
+  right: -10px;
+  z-index: 2;
+}

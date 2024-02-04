@@ -3,20 +3,87 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="This is the Portfolio of Micha Schweizer. He is a swiss computer scientist and has a great passion for his work.">
 
-    <link rel="icon" type="image/svg+xml" href="/assets/vite.svg" />
+    <title>Micha Schweizer</title>
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="theming/michu-tech.colors.css">
+    <link rel="stylesheet" href="index.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,700,1,200" />
+<!--    TODO only download families that are actually used -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-    <title>Micha Schweizer Portfolio</title>
+    <script defer src='/theming/theme-loader.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
   </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+  <body id="body">
+    <section class="loading">
+      <a href="/portfolio/#home">
+        <img src="assets/icons/michu_tech.svg" alt="icon" id="home-icon" />
+      </a>
+      <p class="overlay-text" style="font-size: 28px;" id="loading-text">L</p>
+    </section>
+  
+    <main>
+      <h1 style="position: fixed; visibility: hidden;">Micha Schweizer</h1>
+      <section id="home">
+        <img src="assets/images/micha_schweizer_black.png" alt="me (;"/>
+        <div class="home-content">
+          <h4 style="margin-bottom: 5vh;">About me</h4>
+          <h2>young passionate</h2>
+          <h1 style="margin-bottom: 2.5vh">
+            Software
+            <span class="striped-text" style="background-size: 200%;">developer</span>
+          </h1>
+          <h2>on the hunt for the</h2>
+          <h1>perfect project</h1>
+          <p style="max-width: 550px;">
+            I am a young and motivated developer, <span style="color: var(--michu-tech-accent);">passionate</span> about
+            the latest tech trends and constantly seeking out the newest advancements in the industry. I'm
+            <span style="color: var(--michu-tech-accent);">invested</span> in problem-solving and always eager to learn
+            and grow. My <span style="color: var(--michu-tech-accent);">creativity</span> shines through in the code I
+            write, as I love crafting elegant solutions that make a real impact.
+          </p>
+        </div>
+      </section>
+
+      <div class="banner-container" id="home-banner-container">
+        <div class="banner" id="home-banner"></div>
+      </div>
+
+      <section id="work">
+        <h3>Work</h3>
+      </section>
+
+      <div class="banner-container" id="work-banner-container">
+        <div class="banner" id="work-banner"></div>
+      </div>
+
+      <footer id="contact">
+        <h3>Contact</h3>
+      </footer>
+    </main>
+    
+    <div class="theme-toggle">
+      <button id="theme-toggle-button">
+        <img id="theme-toggle-icon" src="assets/icons/light_mode.svg" alt="colors" width="48" height="48"/>
+      </button>
+    </div>
+
+    <p class="overlay-text" id="html-text">  &lt;HTML&gt;
+COLOR-THEME=
+ “BRIGHT“&gt;
+  &lt;META&gt;
+  &lt;SCALE=1“&gt;</p>
+    <p class="overlay-text" id="binary-text">     1010
+100111
+   01011
+     0110</p>
+
+    <script src='index.js'></script>
   </body>
 </html>
