@@ -95,5 +95,11 @@ function reset3DHover(e) {
 if (!motionMatchMedia.matches) {
     image.addEventListener("mousemove", animate3DHover);
     image.addEventListener("mouseleave", reset3DHover);
-  }
+}
+
+const content = document.getElementById("bottom-banner");
+const contentTop = content.getBoundingClientRect().top;
+const height = window.innerHeight - contentTop
+document.getElementById("line").style.top = `${height}px`;
+content.style.height = height
   

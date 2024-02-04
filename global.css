@@ -6,6 +6,16 @@
     --michu-tech-warn: #C13D2B;
 }
 
+::-moz-selection { 
+    color: var(--michu-tech-background);
+    background: var(--michu-tech-foreground);
+  }
+  
+  ::selection {
+    color: var(--michu-tech-background);
+    background: var(--michu-tech-foreground);
+  }
+
 html {
     background-color: var(--michu-tech-background);
 
@@ -27,7 +37,7 @@ main {
     width: 100svw;
     max-width: 2200px;
     margin: auto;
-    padding: 5vw;
+    padding: 0 5vw;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -127,15 +137,24 @@ main {
 }
 
 .links a {
-    display: block;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 18px;
 
-    width: 200px;
     border-radius: 12px;
     background-color: var(--michu-tech-primary);
-    padding: 10px;
+    padding: 10px 20px;
     margin-bottom: 1vh;
     text-decoration: none;
     color: var(--michu-tech-foreground);
+
+    transition: all 250ms ease-out;
+}
+
+.links a:hover {
+    filter: brightness(110%);
 }
 
 @media screen and (max-width: 900px) {
