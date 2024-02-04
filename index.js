@@ -1,4 +1,5 @@
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(TextPlugin);
 
 document.addEventListener("DOMContentLoaded", init);
 
@@ -30,6 +31,12 @@ function toggleColorPressed() {
 }
 
 function createLoadingAnimation() {
+  gsap.to("#loading-text", {
+    duration: 1.2,
+    text: "LOADING...",
+    ease: "power1.in",
+  });
+
   const tl = gsap.timeline({
     delay: 2,
     defaults: {

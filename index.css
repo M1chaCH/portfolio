@@ -87,6 +87,7 @@ p {
   position: absolute;
   left: 0;
   top: -120px;
+  z-index: 1;
 
   --shadow-color: color-mix(in srgb, var(--michu-tech-primary) 50%, transparent);
   box-shadow: 50px -100px 30px 10px var(--shadow-color);
@@ -99,6 +100,8 @@ main {
 
   display: flex;
   flex-flow: column;
+
+  overflow-x: hidden; /* maybe not the best way, but is an easy fix for the skew in the banner */
 }
 
 main section, footer {
@@ -144,6 +147,7 @@ main #home {
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 2;
   transform: translate(-50%, -50%);
 }
 
@@ -161,6 +165,7 @@ main #home {
   position: fixed;
   bottom: 3vw;
   right: 3vw;
+  z-index: 2;
 
   width: 50px;
   height: 50px;
@@ -197,10 +202,12 @@ main #home {
   position: fixed;
   bottom: 20px;
   left: -10px;
+  z-index: 2;
 }
 
 #binary-text {
   position: fixed;
   top: 20px;
   right: -10px;
+  z-index: 2;
 }
