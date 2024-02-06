@@ -1,33 +1,39 @@
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
+// TODO
+// - mobile view
+
 document.addEventListener("DOMContentLoaded", init);
 
 let themeToggleButton;
 let themeToggleIcon;
+let main;
 let htmlText;
 
 function init() {
   themeToggleButton = document.getElementById("theme-toggle-button");
   themeToggleIcon = document.getElementById("theme-toggle-icon");
+  main = document.getElementById("main");
   htmlText = document.getElementById("html-text");
 
   themeToggleIcon.src = prefersDark() ? "assets/icons/dark_mode.svg" : "assets/icons/light_mode.svg";
   htmlText.innerHTML = prefersDark() ? htmlTextDark : htmlTextLight;
-  document.body.style.backgroundImage = prefersDark() ? 'url("assets/images/wave_dark.png")' : 'url("assets/images/wave_bright.png")';
+  main.style.backgroundImage = prefersDark() ? 'url("assets/images/wave_dark.png")' : 'url("assets/images/wave_bright.png")';
 
   themeToggleButton.addEventListener("click", toggleColorPressed);
 
   createLoadingAnimation();
   createBannerScrollTrigger("#home-banner", "#home-banner-container");
   createBannerScrollTrigger("#work-banner", "#work-banner-container");
+  createOverlayEndTrigger();
 }
 
 function toggleColorPressed() {
   const dark = toggleDarkTheme();
   themeToggleIcon.src = dark ? "assets/icons/dark_mode.svg" : "assets/icons/light_mode.svg";
   htmlText.innerHTML = dark ? htmlTextDark : htmlTextLight;
-  document.body.style.backgroundImage = dark ? 'url("assets/images/wave_dark.png")' : 'url("assets/images/wave_bright.png")';
+  main.style.backgroundImage = dark ? 'url("assets/images/wave_dark.png")' : 'url("assets/images/wave_bright.png")';
 }
 
 function createLoadingAnimation() {
@@ -68,6 +74,10 @@ function createLoadingAnimation() {
     opacity: 0,
   }, "<0.5");
 
+  tl.from("footer", {
+    opacity: 0,
+  }, "<1");
+
   return tl;
 }
 
@@ -77,6 +87,32 @@ function createBannerScrollTrigger(banner, container) {
     ease: "power1.out",
     scrollTrigger: {
       trigger: container,
+      scrub: 0.7,
+    }
+  });
+}
+
+function createOverlayEndTrigger() {
+  gsap.to("#html-text", {
+    ease: "power1.out",
+    y: -200,
+    opacity: 0,
+    scrollTrigger: {
+      start: "bottom bottom",
+      end: "bottom 75%",
+      trigger: "main",
+      scrub: 0.7,
+    }
+  });
+
+  gsap.to("#binary-text", {
+    ease: "power1.out",
+    y: -200,
+    opacity: 0,
+    scrollTrigger: {
+      start: "bottom center",
+      end: "bottom 20%",
+      trigger: "main",
       scrub: 0.7,
     }
   });

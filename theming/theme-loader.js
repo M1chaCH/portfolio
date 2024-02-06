@@ -2,7 +2,13 @@ const THEME_STORAGE_KEY = "color-theme";
 const DARK_THEME = "dark";
 const DEFAULT_THEME = "default";
 
-const prefersDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+const prefersDark = () => {
+  const storedTheme = document.documentElement.getAttribute(THEME_STORAGE_KEY);
+  if(storedTheme === DARK_THEME || storedTheme === DEFAULT_THEME)
+    return storedTheme === DARK_THEME;
+
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
 
 const applyColorTheme = (theme) => {
   document.documentElement.setAttribute(THEME_STORAGE_KEY, theme)
