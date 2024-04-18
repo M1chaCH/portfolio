@@ -1,10 +1,16 @@
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
-// TODO
-// - mobile view
+const SMALL_BREAKPOINT = 1000;
+let useSmallDesign = window.innerWidth <= SMALL_BREAKPOINT;
 
 document.addEventListener("DOMContentLoaded", init);
+window.addEventListener("resize", event => {
+  const isNowSmall = event.currentTarget.innerWidth <= SMALL_BREAKPOINT;
+  if (isNowSmall !== useSmallDesign) {
+    location.reload();
+  }
+})
 
 let themeToggleButton;
 let themeToggleIcon;
@@ -12,6 +18,8 @@ let main;
 let htmlText;
 
 function init() {
+  disableUnusedStyles(useSmallDesign);
+
   themeToggleButton = document.getElementById("theme-toggle-button");
   themeToggleIcon = document.getElementById("theme-toggle-icon");
   main = document.getElementById("main");
@@ -24,9 +32,19 @@ function init() {
   themeToggleButton.addEventListener("click", toggleColorPressed);
 
   createLoadingAnimation();
-  createBannerScrollTrigger("#home-banner", "#home-banner-container");
-  createBannerScrollTrigger("#work-banner", "#work-banner-container");
+  createBannerScrollTrigger("#home-banner", "#home-banner-container", useSmallDesign);
+  createBannerScrollTrigger("#work-banner", "#work-banner-container", useSmallDesign);
   createOverlayEndTrigger();
+}
+
+function disableUnusedStyles(useSmall = true) {
+  for (let styleSheet of document.styleSheets) {
+    if (styleSheet.href?.includes("desktop")) {
+      styleSheet.disabled = useSmall;
+    } else if (styleSheet.href?.includes("mobile")) {
+      styleSheet.disabled = !useSmall;
+    }
+  }
 }
 
 function toggleColorPressed() {
@@ -81,9 +99,9 @@ function createLoadingAnimation() {
   return tl;
 }
 
-function createBannerScrollTrigger(banner, container) {
+function createBannerScrollTrigger(banner, container, havingSmallScreen) {
   gsap.to(banner, {
-    top: -300,
+    top: havingSmallScreen ? -150 : -300,
     ease: "power1.out",
     scrollTrigger: {
       trigger: container,
@@ -119,7 +137,7 @@ function createOverlayEndTrigger() {
 }
 
 const htmlTextDark =
-`
+    `
   &lt;HTML&gt;
 COLOR-THEME=
  “DARK“&gt;
@@ -128,7 +146,7 @@ COLOR-THEME=
 `;
 
 const htmlTextLight =
-`
+    `
   &lt;HTML&gt;
 COLOR-THEME=
  “BRIGHT“&gt;
