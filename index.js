@@ -34,7 +34,9 @@ function init() {
   createLoadingAnimation();
   createBannerScrollTrigger("#home-banner", "#home-banner-container", useSmallDesign);
   createBannerScrollTrigger("#work-banner", "#work-banner-container", useSmallDesign);
+  createWorkAnimations();
   createOverlayEndTrigger();
+
 }
 
 function disableUnusedStyles(useSmall = true) {
@@ -134,6 +136,80 @@ function createOverlayEndTrigger() {
       scrub: 0.7,
     }
   });
+}
+
+function createWorkAnimations() {
+  const yOffset = window.innerHeight;
+  const workItemCount = document.getElementsByClassName("work-item").length;
+
+  gsap.fromTo(
+      ".work-item:not(:first-child)",
+      {
+        y: yOffset,
+      },
+      {
+        y: 0,
+        stagger: 0.7,
+        scrollTrigger: {
+          pin: "#work",
+          scrub: 0.5,
+          start: "top top",
+          end: () => `+=${ yOffset * workItemCount }`,
+        },
+      },
+  );
+
+  /*
+  gsap.fromTo(
+      ".work-item:not(:first-child)",
+      {
+        y: () => window.innerHeight / 2,
+        opacity: 0,
+      },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.5,
+        scrollTrigger: {
+          pin: "#work",
+          markers: true,
+          scrub: true,
+          start: "top top",
+          end: "+=4800",
+        },
+      }
+  );
+*/
+  /*
+  ScrollTrigger.create({
+    trigger: "#work",
+    start: "top top",
+    end: "bottom bottom",
+    pin: "#work-deployment",
+    markers: true,
+  });
+
+  ScrollTrigger.create({
+    trigger: "#work",
+    start: "top top",
+    end: "bottom bottom",
+    pin: "#work-budget",
+  });
+
+  ScrollTrigger.create({
+    trigger: "#work",
+    start: "top top",
+    end: "bottom bottom",
+    pin: "#work-teachu",
+  });
+
+  ScrollTrigger.create({
+    trigger: "#work",
+    start: "top top",
+    end: "bottom bottom",
+    pin: "#work-room",
+  });
+   */
 }
 
 const htmlTextDark =
