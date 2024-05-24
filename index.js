@@ -31,10 +31,10 @@ function init() {
 
   themeToggleButton.addEventListener("click", toggleColorPressed);
 
+  createWorkAnimations(); // changes website structure => needs to be done first
   createLoadingAnimation();
   createBannerScrollTrigger("#home-banner", "#home-banner-container", useSmallDesign);
-  createBannerScrollTrigger("#work-banner", "#work-banner-container", useSmallDesign);
-  createWorkAnimations();
+  createBannerScrollTrigger("#work-banner", "#work-banner-container", useSmallDesign, useSmallDesign ? -50 : -200);
   createOverlayEndTrigger();
 
 }
@@ -58,15 +58,15 @@ function toggleColorPressed() {
 
 function createLoadingAnimation() {
   gsap.to("#loading-text", {
-    duration: 1.2,
+    duration: 0.2,
     text: "LOADING...",
     ease: "power1.in",
   });
 
   const tl = gsap.timeline({
-    delay: 2,
+    delay: 0,
     defaults: {
-      duration: 1.7,
+      duration: 0.3,
       ease: "power3.inOut"
     }
   });
@@ -101,9 +101,11 @@ function createLoadingAnimation() {
   return tl;
 }
 
-function createBannerScrollTrigger(banner, container, havingSmallScreen) {
+function createBannerScrollTrigger(banner, container, havingSmallScreen, top) {
+  const calculatedTop = top ? top : havingSmallScreen ? -150 : -300;
+
   gsap.to(banner, {
-    top: havingSmallScreen ? -150 : -300,
+    top: calculatedTop,
     ease: "power1.out",
     scrollTrigger: {
       trigger: container,

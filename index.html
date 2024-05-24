@@ -81,18 +81,19 @@
 
   <section id="work">
     <h3>Work</h3>
+    <!--    TODO cleanup!! -->
+    <!--    TODO "appear" animation, scale & opacity?-->
+    <!--    TODO only first orange banner is moving -->
+    <!--    TODO fix app images -->
+    <!--    TODO fix mobile -->
     <div class="work-items">
-      <div class="work-item" id="work-teachu" style="margin-top: 36px;">
+      <div class="work-item" id="work-teachu" style="margin-top: clamp(10px, 2vh, 36px);">
         <h4>TeachU</h4>
-        <!--        TODO cleanup!! -->
-        <!--        TODO "appear" animation, scale & opacity?-->
-        <p style="flex-shrink: 1; margin-top: 5px;">A Project we did in School (IDPA). It is a prototype of a modern
-          school
-          application.</p>
+        <p class="subtitle">
+          A Project we did in School (IDPA). It is a prototype of a modern school application.
+        </p>
         <div class="work-item-content">
-          <div class="image-container">
-            <!--            TODO dark and light mode image -->
-            <img src="assets/images/work/work-teachu.png" alt="Screenshot of TeachU"/>
+          <div class="image-container" style="background-image: var(--work-teachu-image);">
           </div>
           <div class="description">
             <p>
@@ -103,18 +104,131 @@
             </p>
           </div>
         </div>
-        <!--        TODO proper arrow -->
-        <a href="/teachu" target="_blank" style="flex-shrink: 1; padding-bottom: 2vh; text-decoration: none; color: unset; align-self: flex-end;">Visit
-          -></a>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag">2022</span>
+            <span class="tag">Angular Frontend</span>
+            <span class="tag">Spring Backend</span>
+            <span class="tag">Eclipse Scout Admin tool</span>
+          </div>
+          <a class="anchor" href="/teachu" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
       </div>
-      <div class="work-item" id="work-room" style="margin-top: 72px;">
+      <div class="work-item" id="work-room" style="margin-top: calc(2 * clamp(10px, 2vh, 36px));">
         <h4>Room Automation</h4>
+        <p class="subtitle">
+          My room automation system. From light scenes to alarms, everything I need. Because it is fun.
+        </p>
+        <div class="work-item-content">
+          <div class="image-container" style="background-image: url('assets/images/work/work-room.png')"></div>
+          <div class="description">
+            <p>
+              This project provides numerous <span style="color: var(--michu-tech-accent);">automations</span> for the
+              tech in my room. My plan was to be able to control the <span style="color: var(--michu-tech-accent);">lights, music and alarms</span>
+              via NFC tags / IOS shortcuts and a minimal web interface (which turned out to not be minimal at all). <br>
+              The interaction with hardware was new to me and taught me once again what it means to be
+              <span style="color: var(--michu-tech-accent);">programming
+              defensively</span>. Hardware can cause any kind of failures. <br>
+              In the future I would implement the project more generic, so that it is able to interact with
+              <span style="color: var(--michu-tech-accent);"> various music & light APIs.</span>
+            </p>
+          </div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag">2023</span>
+            <span class="tag">Angular Frontend</span>
+            <span class="tag">Helidon MP Backend</span>
+          </div>
+          <a class="anchor" href="/room-automation" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
       </div>
-      <div class="work-item" id="work-budget" style="margin-top: 108px;">
+      <div class="work-item" id="work-prayer" style="margin-top: calc(3 * clamp(10px, 2vh, 36px));">
+        <h4>Daily Prayer</h4>
+        <p class="subtitle">
+          A multiplatform App with a user-friendly admin tool.
+        </p>
+        <div class="work-item-content">
+          <div class="description">
+            <p>
+              I have created this app for a friend of mine at my church. His aim is to teach people about various ways
+              of prayer. This app introduced me into
+              <span style="color: var(--michu-tech-accent);">Mobile Development</span> and I am not sure if I like it.
+              Additionally, this is the first project I have created for <span style="color: var(--michu-tech-accent);">a "client."</span>
+            </p>
+          </div>
+          <div class="image-container" style="background-image: url('assets/images/work/work-image-prayer-mobile.png');"></div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag">2024</span>
+            <span class="tag">Angular Admin Tool</span>
+            <span class="tag">Angular Material</span>
+            <span class="tag">React Native</span>
+            <span class="tag">Supabase</span>
+          </div>
+          <a class="anchor" href="/host" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
+      </div>
+      <div class="work-item" id="work-budget" style="margin-top: calc(4 * clamp(10px, 2vh, 36px));">
         <h4>Swiss Budget</h4>
+        <p class="subtitle">
+          A WebApp that lets you manage your money in a breeze. It features automatic transaction import via E-Mail.
+        </p>
+        <div class="work-item-content">
+          <div class="image-container" style="background-image: var(--work-construction-image);"></div>
+          <div class="description">
+            <p>
+              I’ve started this project because I want to gain a better overview of my
+              <span style="color: var(--michu-tech-accent);">finances</span> and it happens to be a great exercise to
+              level up my web-dev skills.<br>
+              Swiss Budget is the first project which I am attempting to <span style="color: var(--michu-tech-accent);">release publicly</span>.
+              This introduces a number of new challenges such as data access control, an actually user-friendly UI,
+              secure and reliable hosting, analytics / proper logging and so on, but I am
+              <span style="color: var(--michu-tech-accent);">exited to face these challenges</span>.<br>
+              Furthermore, I chose to not use any UI Component libraries. While this has already caused me to lose some
+              hair it has also <span style="color: var(--michu-tech-accent);">greatly improved my understanding</span>
+              of Angular and CSS.
+            </p>
+          </div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag" style="background-color: var(--michu-tech-warn);">Under construction</span>
+            <span class="tag">2023 - ...</span>
+            <span class="tag">Angular Frontend</span>
+            <span class="tag">Helidon MP Backend</span>
+            <span class="tag">jOOQ DB access</span>
+          </div>
+          <a class="anchor" href="/swiss-budget" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
       </div>
-      <div class="work-item" id="work-controller" style="margin-top: 144px;">
+      <div class="work-item" id="work-controller" style="margin-top: calc(5 * clamp(10px, 2vh, 36px));">
         <h4>Deployment Controller</h4>
+        <p class="subtitle">
+          A layer to my Web server at home that manages access to various deployments.
+        </p>
+        <div class="work-item-content">
+          <div class="image-container" style="background-image: var(--work-deployment-image);"></div>
+          <div class="description">
+            <p>
+              I have a small Web server at home and I would like to <span style="color: var(--michu-tech-accent);">easily deploy projects</span>.
+              This project provides an <span style="color: var(--michu-tech-accent);">nginx reverse proxy</span> which
+              internally routes the requests. This allows me to use the same domain for any amount of projects.<br>
+              Also, I might want to deploy projects, but they should not be accessible by everybody. This controller
+              also <span style="color: var(--michu-tech-accent);">manages authorisation</span> to the deployments.
+            </p>
+          </div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag">2023 - 2024</span>
+            <span class="tag">Svelte Frontend</span>
+            <span class="tag">Helidon SE Backend</span>
+            <span class="tag">Nginx</span>
+          </div>
+          <a class="anchor" href="/host" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
       </div>
     </div>
   </section>
