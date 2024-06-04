@@ -2,7 +2,7 @@ gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
 
 const SMALL_BREAKPOINT = 1000;
-let useSmallDesign = window.innerWidth <= SMALL_BREAKPOINT;
+const useSmallDesign = window.innerWidth <= SMALL_BREAKPOINT;
 
 document.addEventListener("DOMContentLoaded", init);
 window.addEventListener("resize", event => {
@@ -31,12 +31,20 @@ function init() {
 
   themeToggleButton.addEventListener("click", toggleColorPressed);
 
-  createWorkAnimations(); // changes website structure => needs to be done first
+  if (useSmallDesign) {
+    createMobileWorkAnimations("#work-teachu");
+    createMobileWorkAnimations("#work-room");
+    createMobileWorkAnimations("#work-prayer");
+    createMobileWorkAnimations("#work-budget");
+    createMobileWorkAnimations("#work-controller");
+    createMobileWorkAnimations("#work-other");
+  } else {
+    createWorkAnimations(); // changes website structure => needs to be done first
+  }
   createLoadingAnimation();
   createBannerScrollTrigger("#home-banner", "#home-banner-container", useSmallDesign);
   createBannerScrollTrigger("#work-banner", "#work-banner-container", useSmallDesign, useSmallDesign ? -50 : -200);
   createOverlayEndTrigger();
-
 }
 
 function disableUnusedStyles(useSmall = true) {
@@ -58,15 +66,15 @@ function toggleColorPressed() {
 
 function createLoadingAnimation() {
   gsap.to("#loading-text", {
-    duration: 0.2,
+    duration: 1.2,
     text: "LOADING...",
     ease: "power1.in",
   });
 
   const tl = gsap.timeline({
-    delay: 0,
+    delay: 2,
     defaults: {
-      duration: 0.3,
+      duration: 1.7,
       ease: "power3.inOut"
     }
   });
@@ -212,6 +220,69 @@ function createWorkAnimations() {
     pin: "#work-room",
   });
    */
+}
+
+// TODO
+// - a lot of this code can be reused
+// - try do use the exact same animations for desktop,
+//    different scroll trigger is probably required
+function createMobileWorkAnimations(workItemId) {
+  const defaultFlyInAnimation = {
+    y: 40,
+    opacity: 0.3,
+  }
+
+  const upperTimeline = gsap.timeline({
+    defaults: {
+      duration: 0.4,
+      ease: "power1.out",
+    },
+    scrollTrigger: {
+      trigger: workItemId,
+      start: "top 90%",
+      end: "top 20%",
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  // alle können vielleicht mit document.getElementsByClass...
+  upperTimeline.from(workItemId + " h4", {
+    ...defaultFlyInAnimation,
+  }, "<");
+
+  upperTimeline.from(workItemId + " .subtitle", {
+    ...defaultFlyInAnimation,
+  }, "<0.1");
+
+  upperTimeline.from(workItemId + " .image-container", {
+    ...defaultFlyInAnimation,
+    scale: 0.9,
+  }, "<0.1");
+
+  const lowerTimeline = gsap.timeline({
+    defaults: {
+      duration: 0.4,
+      ease: "power1.out",
+    },
+    scrollTrigger: {
+      trigger: workItemId,
+      start: "top 40%",
+      end: "top top",
+      markers: true,
+      toggleActions: "play none none reverse",
+    },
+  });
+
+  lowerTimeline.from(workItemId + " .description", {
+    ...defaultFlyInAnimation,
+  }, "<");
+
+  lowerTimeline.from(workItemId + " .tag", {
+    y: 20,
+    opacity: 0,
+    scale: 0.75,
+    stagger: 0.1,
+  }, "<0.15");
 }
 
 const htmlTextDark =

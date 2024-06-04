@@ -1,21 +1,13 @@
+/* FRAMEWORK */
 :root,
 [color-theme="default"] {
   --toned-gray: #4A4E4C;
   --michu-tech-primary: #C3C3C3;
-
   --link-icon: url(assets/icons/light_link.svg);
-  /*TODO mobile images && reduce image sizes*/
-  --work-teachu-image: url(assets/images/work/work-teachu-light.png);
-  --work-construction-image: url(assets/images/work/work-construction-light.png);
-  --work-deployment-image: url(assets/images/work/work-image-deployments-light.png);
 }
 
 [color-theme="dark"] {
   --michu-tech-primary: #4C4F4C;
-
-  --work-teachu-image: url(assets/images/work/work-teachu-dark.png);
-  --work-construction-image: url(assets/images/work/work-construction-dark.png);
-  --work-deployment-image: url(assets/images/work/work-image-deployments-dark.png);
   --link-icon: url(assets/icons/dark_link.svg);
 }
 
@@ -76,24 +68,9 @@ p {
   font-weight: 300;
 }
 
-.banner-container {
-  position: relative;
-  z-index: 100;
-  pointer-events: none;
-}
+/*TODO banner z-index is way to high */
 
-.banner-container .banner {
-  background-image: url(assets/bar.svg);
-  background-position-x: -70px;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  position: absolute;
-
-  --shadow-color: color-mix(in srgb, var(--michu-tech-primary) 50%, transparent);
-  filter: drop-shadow(50px 20px 60px var(--shadow-color));
-}
-
+/* HOME */
 main {
   width: 100%;
   max-width: 2500px;
@@ -111,8 +88,8 @@ main section {
   min-height: 100vh;
 }
 
+/* WORK */
 #work {
-  height: 100vh;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -123,38 +100,15 @@ main section {
   margin-bottom: 20px;
 }
 
-.work-items {
-  position: relative;
-  width: 80vw;
-  height: 70vh;
-  margin: 0 auto;
-}
-
-/*TODO dont know*/
-/*.work-item:first-of-type {*/
-/*  background-color: transparent !important;*/
-/*}*/
-
 .work-item {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background-color: color-mix(in srgb, var(--toned-gray) 25%, var(--michu-tech-background));
   box-sizing: border-box;
   border-radius: 6px;
   padding: 0 1vh;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
-.work-item:not(:first-of-type) {
-  --shadow-color: color-mix(in srgb, var(--michu-tech-background) 50%, transparent);
-  box-shadow: 0 -6px 6px -5px var(--shadow-color);
+.work-item div:not(.work-item-content) {
+  flex-shrink: 1;
+  margin-top: 5px;
 }
 
 .work-item h4 {
@@ -164,6 +118,43 @@ main section {
 .work-item .subtitle {
   padding-top: 5px;
   margin: 0 !important;
+}
+
+.work-item .work-item-content .image-container {
+  box-sizing: border-box;
+  border-radius: 16px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.work-item .work-item-content .description {
+  display: flex;
+  flex-flow: column;
+  gap: 2vh;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.work-item .anchor {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+
+  text-decoration: none;
+  color: unset;
+  font-weight: 200;
+}
+
+.link-icon {
+  display: inline-block;
+
+  background-image: var(--link-icon);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .tags {
@@ -179,77 +170,32 @@ main section {
   box-sizing: border-box;
 
   font-weight: 500;
-  font-size: 14px;
   text-transform: uppercase;
 }
 
-.work-item .work-item-content {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto;
-  justify-items: center;
-  align-items: center;
-  flex-grow: 1;
-
-  width: 100%;
-}
-
-.work-item .work-item-content .description {
-  display: flex;
-  flex-flow: column;
-  gap: 2vh;
-
-  justify-content: center;
-  align-items: center;
-}
-
-.work-item .work-item-footer {
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  justify-content: space-between;
-  padding-bottom: 1vh;
-}
-
-.work-item div:not(.work-item-content) {
-  flex-shrink: 1;
-  margin-top: 5px;
-}
-
-.work-item .anchor {
-  align-self: flex-end;
-  display: flex;
-  align-items: flex-end;
-  gap: 8px;
-
+#workOtherGithubAnchor {
   text-decoration: none;
-  color: unset;
-  font-weight: 200;
-  font-size: 20px;
-  letter-spacing: 1px;
-
-  transition: scale 200ms ease-out;
+  color: var(--michu-tech-accent);
+  font-weight: 300;
 }
 
-.work-item:hover .anchor {
-  scale: 1.1;
+/* FOOTER AND BANNER */
+.banner-container {
+  position: relative;
+  z-index: 99;
+  pointer-events: none;
 }
 
-.work-item .work-item-content .image-container {
-  width: 80%;
-  height: 100%;
-  box-sizing: border-box;
-  border-radius: 16px;
-
+.banner-container .banner {
+  background-image: url(assets/bar.svg);
+  background-position-x: -70px;
   background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: contain;
-}
+  background-size: cover;
 
-.description p {
-  text-align: center;
-  max-width: min(80vw, 72%);
+  position: absolute;
+
+  --shadow-color: color-mix(in srgb, var(--michu-tech-primary) 50%, transparent);
+  filter: drop-shadow(50px 20px 60px var(--shadow-color));
 }
 
 footer {
@@ -363,7 +309,7 @@ footer {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 99;
+  z-index: 101;
   transform: translate(-50%, -50%);
 
   pointer-events: all;
@@ -383,7 +329,7 @@ footer {
   position: fixed;
   bottom: 3vw;
   right: 3vw;
-  z-index: 50;
+  z-index: 100;
 
   width: 50px;
   height: 50px;
@@ -400,6 +346,7 @@ footer {
 
   cursor: pointer;
   transition: all 200ms ease-out;
+  opacity: 80%;
 }
 
 .theme-toggle #theme-toggle-button:hover {
@@ -420,24 +367,12 @@ footer {
   position: fixed;
   bottom: 20px;
   left: -10px;
-  z-index: 99;
+  z-index: 100;
 }
 
 #binary-text {
   position: fixed;
   top: 20px;
   right: -10px;
-  z-index: 99;
-}
-
-.link-icon {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-
-  background-image: var(--link-icon);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+  z-index: 100;
 }

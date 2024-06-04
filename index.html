@@ -83,9 +83,9 @@
     <h3>Work</h3>
     <!--    TODO cleanup!! -->
     <!--    TODO "appear" animation, scale & opacity?-->
-    <!--    TODO only first orange banner is moving -->
+    <!--    TODO only first orange banner is moving (I actually think it is, but down and not up) -->
     <!--    TODO fix app images -->
-    <!--    TODO fix mobile -->
+    <!--    TODO fix mobile (maybe not sticky (it jumps a bit) and normal list) -->
     <div class="work-items">
       <div class="work-item" id="work-teachu" style="margin-top: clamp(10px, 2vh, 36px);">
         <h4>TeachU</h4>
@@ -120,7 +120,7 @@
           My room automation system. From light scenes to alarms, everything I need. Because it is fun.
         </p>
         <div class="work-item-content">
-          <div class="image-container" style="background-image: url('assets/images/work/work-room.png')"></div>
+          <div class="image-container" style="background-image: var(--work-automation-image)"></div>
           <div class="description">
             <p>
               This project provides numerous <span style="color: var(--michu-tech-accent);">automations</span> for the
@@ -149,6 +149,7 @@
           A multiplatform App with a user-friendly admin tool.
         </p>
         <div class="work-item-content">
+          <div class="image-container" style="background-image: var(--work-prayer-image);"></div>
           <div class="description">
             <p>
               I have created this app for a friend of mine at my church. His aim is to teach people about various ways
@@ -157,7 +158,6 @@
               Additionally, this is the first project I have created for <span style="color: var(--michu-tech-accent);">a "client."</span>
             </p>
           </div>
-          <div class="image-container" style="background-image: url('assets/images/work/work-image-prayer-mobile.png');"></div>
         </div>
         <div class="work-item-footer">
           <div class="tags">
@@ -165,9 +165,10 @@
             <span class="tag">Angular Admin Tool</span>
             <span class="tag">Angular Material</span>
             <span class="tag">React Native</span>
+            <span class="tag">Expo Framework</span>
             <span class="tag">Supabase</span>
           </div>
-          <a class="anchor" href="/host" target="_blank">Visit<span class="link-icon"></span></a>
+          <a class="anchor" href="/daily-prayer" target="_blank">Visit<span class="link-icon"></span></a>
         </div>
       </div>
       <div class="work-item" id="work-budget" style="margin-top: calc(4 * clamp(10px, 2vh, 36px));">
@@ -176,7 +177,7 @@
           A WebApp that lets you manage your money in a breeze. It features automatic transaction import via E-Mail.
         </p>
         <div class="work-item-content">
-          <div class="image-container" style="background-image: var(--work-construction-image);"></div>
+          <div class="image-container" style="background-image: var(--work-other-image);"></div>
           <div class="description">
             <p>
               I’ve started this project because I want to gain a better overview of my
@@ -227,6 +228,42 @@
             <span class="tag">Helidon SE Backend</span>
             <span class="tag">Nginx</span>
           </div>
+          <a class="anchor" href="/host" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
+      </div>
+      <div class="work-item" id="work-other" style="margin-top: calc(6 * clamp(10px, 2vh, 36px));">
+        <h4>Other</h4>
+        <p class="subtitle">
+          On my path as a developer I have come across many more smaller projects.
+        </p>
+        <div class="work-item-content">
+          <div class="image-container" style="background-image: var(--work-other-image)"></div>
+          <div class="description">
+            <a id="workOtherGithubAnchor" href="https://github.com/M1chaCH" target="_blank">Github/M1chACH</a>
+            <p>
+              In 2019 I have started an Apprenticeship as a Computer Scientist. Since then, I have always been creating
+              small projects and experimenting with software. Many of these small experiments are public on Github. But
+              not everything is public, I had to make some repositories private because they were not my most proud
+              work.<br>
+              <span style="font-weight: 100; font-size: 82%">(font like this means little experience)</span>
+            </p>
+          </div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag">2019 - ...</span>
+            <span class="tag">Svelte</span>
+            <span class="tag">C#</span>
+            <span class="tag">JSF</span>
+            <span class="tag">Docker</span>
+            <span class="tag" style="font-weight: 100;">Go</span>
+            <span class="tag" style="font-weight: 100;">Rust</span>
+            <span class="tag" style="font-weight: 100;">Java on Android</span>
+            <span class="tag" style="font-weight: 100;">Swift</span>
+            <span class="tag" style="font-weight: 100;">Nuxt</span>
+            <span class="tag" style="font-weight: 100;">Ruby on Rails</span>
+          </div>
+          <!--          fixme wraps onto a new line if many tags exist, generally not really happy with this-->
           <a class="anchor" href="/host" target="_blank">Visit<span class="link-icon"></span></a>
         </div>
       </div>
