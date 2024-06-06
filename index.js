@@ -45,6 +45,8 @@ function init() {
   createBannerScrollTrigger("#home-banner", "#home-banner-container", useSmallDesign);
   createBannerScrollTrigger("#work-banner", "#work-banner-container", useSmallDesign, useSmallDesign ? -50 : -200);
   createOverlayEndTrigger();
+
+  registerContactSend();
 }
 
 function disableUnusedStyles(useSmall = true) {
@@ -230,6 +232,74 @@ function createMobileWorkAnimations(workItemId) {
     scale: 0.75,
     stagger: 0.1,
   }, "<0.15");
+}
+
+function registerContactSend() {
+  const mailElement = document.getElementById("mailInput");
+  const messageElement = document.getElementById("messageInput");
+  const sendElement = document.getElementById("contactSend");
+  const contactMessageElement = document.getElementById("contactResultMessage");
+  toggleContactMessageDisplay(contactMessageElement, false);
+  let removeMessageTimeout = undefined;
+
+  sendElement.addEventListener("click", async (e) => {
+    e.preventDefault();
+    if (removeMessageTimeout) {
+      clearTimeout(removeMessageTimeout);
+    }
+
+    if (!mailElement.value || !mailElement.checkValidity()) {
+      toggleContactMessageDisplay(contactMessageElement, true, true, "Not a valid email!")
+      return;
+    }
+    const message = messageElement.value;
+    if (message.length > 500) {
+      toggleContactMessageDisplay(contactMessageElement, true, true, `Please keep your message shorter than 500 characters. (${ message.length })`);
+      return;
+    }
+    if (message.length < 30) {
+      toggleContactMessageDisplay(contactMessageElement, true, true, `Please send a message that has at least 30 characters. (${ message.length })`);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://michu-tech.com/root/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          mail: mailElement.value,
+          message,
+        })
+      });
+
+      if (response.ok) {
+        toggleContactMessageDisplay(contactMessageElement, true, false, "Sent!");
+        messageElement.value = "";
+        removeMessageTimeout = setTimeout(() => {
+          toggleContactMessageDisplay(contactMessageElement, false);
+        }, 4 * 1000);
+      } else {
+        toggleContactMessageDisplay(contactMessageElement, true, true, `Sorry, this message could not be sent! (${ response.status } - ${ await response.text() })`);
+      }
+    } catch (e) {
+      toggleContactMessageDisplay(contactMessageElement, true, true, `Sorry, this message could not be sent! (server is not available)`);
+    }
+  })
+}
+
+function toggleContactMessageDisplay(element, show, error = true, message = "something went wrong") {
+  if (show) {
+    element.style.transform = "translateY(0)";
+    element.style.opacity = "1";
+    element.style.color = error ? "var(--michu-tech-warn)" : "var(--michu-tech-primary)";
+    element.innerText = message;
+  } else {
+    element.style.transform = "translateY(100%)";
+    element.style.opacity = "0";
+    element.style.color = "var(--michu-tech-background)"
+  }
 }
 
 const htmlTextDark =

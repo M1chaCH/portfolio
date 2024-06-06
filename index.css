@@ -272,12 +272,11 @@ footer {
   cursor: pointer;
 }
 
-#mail {
+#mailInput {
   height: 52px;
 }
 
-#message {
-  height: 180px;
+#messageInput {
   resize: none;
 }
 
@@ -291,6 +290,11 @@ footer {
 
 #contactSend:disabled {
   opacity: 60%;
+}
+
+.contact-result-message {
+  font-weight: 500;
+  transition: all 200ms ease-out;
 }
 
 .striped-text {
