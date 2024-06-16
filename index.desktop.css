@@ -3,19 +3,20 @@
   display: none !important;
 }
 
-/*TODO complete all renders of the images*/
 :root, [color-theme="default"] {
-  --work-teachu-image: url(assets/images/work/work-teachu-light.png);
+  --work-teachu-image: url(assets/images/work/desktop-teachu-light.webp);
   --work-automation-image: url(assets/images/work/desktop-room-automation.webp);
   --work-other-image: url(assets/images/work/desktop-other-light.webp);
-  --work-deployment-image: url(assets/images/work/work-image-deployments-light.png);
+  --work-deployment-image: url(assets/images/work/desktop-controller-light.webp);
   --work-prayer-image: url(assets/images/work/mobile-prayer-light.webp);
+  --work-budget-image: url(assets/images/work/desktop-budget-light.webp);
 }
 
 [color-theme="dark"] {
-  --work-teachu-image: url(assets/images/work/work-teachu-dark.png);
-  --work-other-image: url(assets/images/work/desktop-other-light.webp);
-  --work-deployment-image: url(assets/images/work/work-image-deployments-dark.png);
+  --work-teachu-image: url(assets/images/work/desktop-teachu-dark.webp);
+  --work-other-image: url(assets/images/work/desktop-other-dark.webp);
+  --work-deployment-image: url(assets/images/work/desktop-controller-dark.webp);
+  --work-budget-image: url(assets/images/work/desktop-budget-dark.webp);
 }
 
 h1 {
@@ -91,10 +92,10 @@ main .home {
   background-color: color-mix(in srgb, var(--toned-gray) 25%, var(--michu-tech-background));
 }
 
-/*TODO dont know*/
-.work-item:first-of-type {
-  background-color: transparent !important;
-}
+/* actually can't decide what looks better */
+/*.work-item:first-of-type {*/
+/*  background-color: transparent !important;*/
+/*}*/
 
 .work-item:not(:first-of-type) {
   --shadow-color: color-mix(in srgb, var(--michu-tech-background) 50%, transparent);
@@ -113,7 +114,7 @@ main .home {
 }
 
 .work-item .work-item-content .image-container {
-  width: 80%;
+  width: 100%;
   height: 100%;
   background-attachment: fixed;
 }

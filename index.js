@@ -32,14 +32,13 @@ function init() {
   themeToggleButton.addEventListener("click", toggleColorPressed);
 
   if (useSmallDesign) {
-    createMobileWorkAnimations("#work-teachu");
-    createMobileWorkAnimations("#work-room");
-    createMobileWorkAnimations("#work-prayer");
-    createMobileWorkAnimations("#work-budget");
-    createMobileWorkAnimations("#work-controller");
-    createMobileWorkAnimations("#work-other");
+    const workItems = document.getElementsByClassName("work-item");
+    for (let workItem of workItems) {
+      const idString = "#" + workItem.id;
+      createMobileWorkAnimations(idString);
+    }
   } else {
-    createWorkAnimations(); // changes website structure => needs to be done first
+    createWorkItemPinnedScroll(); // will change website structure => needs to be done first
   }
   createLoadingAnimation();
   createBannerScrollTrigger("#home-banner", "#home-banner-container", useSmallDesign);
@@ -150,7 +149,7 @@ function createOverlayEndTrigger() {
   });
 }
 
-function createWorkAnimations() {
+function createWorkItemPinnedScroll() {
   const yOffset = window.innerHeight;
   const workItemCount = document.getElementsByClassName("work-item").length;
 
@@ -158,24 +157,27 @@ function createWorkAnimations() {
       ".work-item:not(:first-child)",
       {
         y: yOffset,
+        scale: 0.5,
+        opacity: 0.85,
+        rotationX: -50,
       },
       {
         y: 0,
-        stagger: 0.7,
+        scale: 1,
+        opacity: 1,
+        stagger: 0.5,
+        rotationX: 0,
         scrollTrigger: {
           pin: "#work",
           scrub: 0.5,
           start: "top top",
           end: () => `+=${ yOffset * workItemCount }`,
+          toggleClass: "active",
         },
       },
   );
 }
 
-// TODO
-// - a lot of this code can be reused
-// - try do use the exact same animations for desktop,
-//    different scroll trigger is probably required
 function createMobileWorkAnimations(workItemId) {
   const defaultFlyInAnimation = {
     y: 40,

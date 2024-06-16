@@ -6,32 +6,36 @@
 /* small screen and touchscreen */
 :root, [color-theme="default"] {
   --work-teachu-image: url(assets/images/work/mobile-teachu-light.webp);
-  --work-automation-image: url(assets/images/work/mobile-room-automation.webp);
-  --work-other-image: url(assets/images/work/desktop-other-light.webp);
-  --work-deployment-image: url(assets/images/work/work-image-deployments-light.png);
+  --work-automation-image: url(assets/images/work/mobile-automation-light.webp);
+  --work-other-image: url(assets/images/work/mobile-other-light.webp);
+  --work-deployment-image: url(assets/images/work/mobile-controller-light.webp);
   --work-prayer-image: url(assets/images/work/mobile-prayer-light.webp);
+  --work-budget-image: url(assets/images/work/mobile-budget-light.webp);
 }
 
 [color-theme="dark"] {
   --work-teachu-image: url(assets/images/work/mobile-teachu-dark.webp);
-  --work-other-image: url(assets/images/work/desktop-other-light.webp);
-  --work-deployment-image: url(assets/images/work/work-image-deployments-dark.png);
+  --work-other-image: url(assets/images/work/mobile-other-dark.webp);
+  --work-deployment-image: url(assets/images/work/mobile-controller-dark.webp);
+  --work-budget-image: url(assets/images/work/mobile-budget-dark.webp);
 }
 
 /* not touchscreen */
 @media (any-pointer: fine) {
   :root, [color-theme="default"] {
-    --work-teachu-image: url(assets/images/work/work-teachu-light.png);
+    --work-teachu-image: url(assets/images/work/desktop-teachu-light.webp);
     --work-automation-image: url(assets/images/work/desktop-room-automation.webp);
     --work-other-image: url(assets/images/work/desktop-other-light.webp);
-    --work-deployment-image: url(assets/images/work/work-image-deployments-light.png);
+    --work-deployment-image: url(assets/images/work/desktop-controller-light.webp);
     --work-prayer-image: url(assets/images/work/mobile-prayer-light.webp);
+    --work-budget-image: url(assets/images/work/desktop-budget-light.webp);
   }
 
   [color-theme="dark"] {
-    --work-teachu-image: url(assets/images/work/work-teachu-dark.png);
-    --work-other-image: url(assets/images/work/desktop-other-light.webp);
-    --work-deployment-image: url(assets/images/work/work-image-deployments-dark.png);
+    --work-teachu-image: url(assets/images/work/desktop-teachu-dark.webp);
+    --work-other-image: url(assets/images/work/desktop-other-dark.webp);
+    --work-deployment-image: url(assets/images/work/desktop-controller-dark.webp);
+    --work-budget-image: url(assets/images/work/desktop-controller-dark.webp);
   }
 }
 

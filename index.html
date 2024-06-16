@@ -14,7 +14,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!--    TODO only download families that are actually used -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
   <script src='theming/theme-loader.js'></script>
@@ -78,14 +77,8 @@
   <div class="banner-container" id="home-banner-container">
     <div class="banner" id="home-banner"></div>
   </div>
-
   <section id="work">
     <h3>Work</h3>
-    <!--    TODO cleanup!! -->
-    <!--    TODO "appear" animation, scale & opacity?-->
-    <!--    TODO only first orange banner is moving (I actually think it is, but down and not up) -->
-    <!--    TODO fix app images -->
-    <!--    TODO fix mobile (maybe not sticky (it jumps a bit) and normal list) -->
     <div class="work-items">
       <div class="work-item" id="work-teachu" style="margin-top: clamp(10px, 2vh, 36px);">
         <h4>TeachU</h4>
@@ -177,7 +170,7 @@
           A WebApp that lets you manage your money in a breeze. It features automatic transaction import via E-Mail.
         </p>
         <div class="work-item-content">
-          <div class="image-container" style="background-image: var(--work-other-image);"></div>
+          <div class="image-container" style="background-image: var(--work-budget-image);"></div>
           <div class="description">
             <p>
               I’ve started this project because I want to gain a better overview of my
@@ -234,7 +227,7 @@
       <div class="work-item" id="work-other" style="margin-top: calc(6 * clamp(10px, 2vh, 36px));">
         <h4>Other</h4>
         <p class="subtitle">
-          On my path as a developer I have come across many more smaller projects.
+          During my career as a developer I have come across many more smaller projects.
         </p>
         <div class="work-item-content">
           <div class="image-container" style="background-image: var(--work-other-image)"></div>
@@ -263,7 +256,6 @@
             <span class="tag" style="font-weight: 100;">Nuxt</span>
             <span class="tag" style="font-weight: 100;">Ruby on Rails</span>
           </div>
-          <!--          fixme wraps onto a new line if many tags exist, generally not really happy with this-->
           <a class="anchor" href="/host" target="_blank">Visit<span class="link-icon"></span></a>
         </div>
       </div>
