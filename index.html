@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="This is the Portfolio of Micha Schweizer. He is a swiss computer scientist and has a great passion for his work.">
-
+  <meta name="description" content="I am a young and motivated developer, passionate about the latest tech trends and constantly seeking out the newest advancements in the industry. I'm invested in problem-solving and always eager to learn and grow. My creativity shines through in the code I write, as I love crafting elegant solutions that make a real impact.">
   <title>Micha Schweizer</title>
+
   <link rel="icon" href="/assets/favicon.ico">
   <link rel="stylesheet" href="theming/michu-tech.colors.css">
   <link rel="stylesheet" href="index.css">
@@ -14,17 +14,18 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!--    TODO only download families that are actually used -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
-  <script src='theming/theme-loader.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+
+  <script src='theming/theme-loader.js'></script>
+  <script src='index.js'></script>
 </head>
 <body id="body">
 <section class="loading">
-  <a href="/portfolio/#home">
+  <a href="#home">
     <img src="assets/icons/michu_tech.svg" alt="icon" id="home-icon"/>
   </a>
   <p class="overlay-text" style="font-size: 28px;" id="loading-text">L</p>
@@ -78,9 +79,191 @@
   <div class="banner-container" id="home-banner-container">
     <div class="banner" id="home-banner"></div>
   </div>
-
   <section id="work">
     <h3>Work</h3>
+    <div class="work-items">
+      <div class="work-item" id="work-teachu" style="margin-top: clamp(10px, 2vh, 36px);">
+        <h4>TeachU</h4>
+        <p class="subtitle">
+          A Project we did in School (IDPA). It is a prototype of a modern school application.
+        </p>
+        <div class="work-item-content">
+          <div class="image-container" style="background-image: var(--work-teachu-image);">
+          </div>
+          <div class="description">
+            <p>
+              «Revolutionizing digital <span style="color: var(--michu-tech-accent);">collaboration between students, teachers and parents</span>
+              at Swiss high schools.» An
+              interdisciplinary project work by Roman Bürge, Micha Schweizer, Oliver Umbricht and Eric Wermelinger,
+              developed from April - October 2022 at Berufsfachschule Baden.
+            </p>
+          </div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag">2022</span>
+            <span class="tag">Angular Frontend</span>
+            <span class="tag">Spring Backend</span>
+            <span class="tag">Eclipse Scout Admin tool</span>
+          </div>
+          <a class="anchor" href="/teachu" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
+      </div>
+      <div class="work-item" id="work-room" style="margin-top: calc(2 * clamp(10px, 2vh, 36px));">
+        <h4>Room Automation</h4>
+        <p class="subtitle">
+          My room automation system. From light scenes to alarms, everything I need. Because it is fun.
+        </p>
+        <div class="work-item-content">
+          <div class="image-container" style="background-image: var(--work-automation-image)"></div>
+          <div class="description">
+            <p>
+              This project provides numerous <span style="color: var(--michu-tech-accent);">automations</span> for the
+              tech in my room. My plan was to be able to control the <span style="color: var(--michu-tech-accent);">lights, music and alarms</span>
+              via NFC tags / IOS shortcuts and a minimal web interface (which turned out to not be minimal at all). <br>
+              The interaction with hardware was new to me and taught me once again what it means to be
+              <span style="color: var(--michu-tech-accent);">programming
+              defensively</span>. Hardware can cause any kind of failures. <br>
+              In the future I would implement the project more generic, so that it is able to interact with
+              <span style="color: var(--michu-tech-accent);"> various music & light APIs.</span>
+            </p>
+          </div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag">2023</span>
+            <span class="tag">Angular Frontend</span>
+            <span class="tag">Helidon MP Backend</span>
+          </div>
+          <a class="anchor" href="/room-automation" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
+      </div>
+      <div class="work-item" id="work-prayer" style="margin-top: calc(3 * clamp(10px, 2vh, 36px));">
+        <h4>Daily Prayer</h4>
+        <p class="subtitle">
+          A multiplatform App with a user-friendly admin tool.
+        </p>
+        <div class="work-item-content">
+          <div class="image-container" style="background-image: var(--work-prayer-image);"></div>
+          <div class="description">
+            <p>
+              I have created this app for a friend of mine at my church. His aim is to teach people about various ways
+              of prayer. This app introduced me into
+              <span style="color: var(--michu-tech-accent);">Mobile Development</span> and I am not sure if I like it.
+              Additionally, this is the first project I have created for <span style="color: var(--michu-tech-accent);">a "client."</span>
+            </p>
+          </div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag">2024</span>
+            <span class="tag">Angular Admin Tool</span>
+            <span class="tag">Angular Material</span>
+            <span class="tag">React Native</span>
+            <span class="tag">Expo Framework</span>
+            <span class="tag">Supabase</span>
+          </div>
+          <a class="anchor" href="/daily-prayer" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
+      </div>
+      <div class="work-item" id="work-budget" style="margin-top: calc(4 * clamp(10px, 2vh, 36px));">
+        <h4>Swiss Budget</h4>
+        <p class="subtitle">
+          A WebApp that lets you manage your money in a breeze. It features automatic transaction import via E-Mail.
+        </p>
+        <div class="work-item-content">
+          <div class="image-container" style="background-image: var(--work-budget-image);"></div>
+          <div class="description">
+            <p>
+              I’ve started this project because I want to gain a better overview of my
+              <span style="color: var(--michu-tech-accent);">finances</span> and it happens to be a great exercise to
+              level up my web-dev skills.<br>
+              Swiss Budget is the first project which I am attempting to <span style="color: var(--michu-tech-accent);">release publicly</span>.
+              This introduces a number of new challenges such as data access control, an actually user-friendly UI,
+              secure and reliable hosting, analytics / proper logging and so on, but I am
+              <span style="color: var(--michu-tech-accent);">exited to face these challenges</span>.<br>
+              Furthermore, I chose to not use any UI Component libraries. While this has already caused me to lose some
+              hair it has also <span style="color: var(--michu-tech-accent);">greatly improved my understanding</span>
+              of Angular and CSS.
+            </p>
+          </div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag" style="background-color: var(--michu-tech-warn);">Under construction</span>
+            <span class="tag">2023 - ...</span>
+            <span class="tag">Angular Frontend</span>
+            <span class="tag">Helidon MP Backend</span>
+            <span class="tag">jOOQ DB access</span>
+          </div>
+          <a class="anchor" href="/swiss-budget" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
+      </div>
+      <div class="work-item" id="work-controller" style="margin-top: calc(5 * clamp(10px, 2vh, 36px));">
+        <h4>Deployment Controller</h4>
+        <p class="subtitle">
+          A layer to my Web server at home that manages access to various deployments.
+        </p>
+        <div class="work-item-content">
+          <div class="image-container" style="background-image: var(--work-deployment-image);"></div>
+          <div class="description">
+            <p>
+              I have a small Web server at home,
+              and I would like to <span style="color: var(--michu-tech-accent);">easily deploy projects</span>.
+              This project provides a <span style="color: var(--michu-tech-accent);">nginx reverse proxy</span> which
+              internally routes the requests.
+              This allows me to use the same domain for any amount of projects.<br>
+              Also, I might want to deploy projects, but they should not be accessible by everybody. This controller
+              also <span style="color: var(--michu-tech-accent);">manages authorisation</span> to the deployments.
+            </p>
+          </div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag">2023 - 2024</span>
+            <span class="tag">Svelte Frontend</span>
+            <span class="tag">Helidon SE Backend</span>
+            <span class="tag">Nginx</span>
+          </div>
+          <a class="anchor" href="/host" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
+      </div>
+      <div class="work-item" id="work-other" style="margin-top: calc(6 * clamp(10px, 2vh, 36px));">
+        <h4>Other</h4>
+        <p class="subtitle">
+          During my career as a developer I have come across many more smaller projects.
+        </p>
+        <div class="work-item-content">
+          <div class="image-container" style="background-image: var(--work-other-image)"></div>
+          <div class="description">
+            <a id="workOtherGithubAnchor" href="https://github.com/M1chaCH" target="_blank">Github/M1chACH</a>
+            <p>
+              In 2019 I have started an Apprenticeship as a Computer Scientist. Since then, I have always been creating
+              small projects and experimenting with software. Many of these small experiments are public on Github. But
+              not everything is public, I had to make some repositories private because they were not my most proud
+              work.<br>
+              <span style="font-weight: 100; font-size: 82%">(font like this means little experience)</span>
+            </p>
+          </div>
+        </div>
+        <div class="work-item-footer">
+          <div class="tags">
+            <span class="tag">2019 - ...</span>
+            <span class="tag">Svelte</span>
+            <span class="tag">C#</span>
+            <span class="tag">JSF</span>
+            <span class="tag">Docker</span>
+            <span class="tag" style="font-weight: 100;">Go</span>
+            <span class="tag" style="font-weight: 100;">Rust</span>
+            <span class="tag" style="font-weight: 100;">Java on Android</span>
+            <span class="tag" style="font-weight: 100;">Swift</span>
+            <span class="tag" style="font-weight: 100;">Nuxt</span>
+            <span class="tag" style="font-weight: 100;">Ruby on Rails</span>
+          </div>
+          <a class="anchor" href="https://github.com/M1chaCH" target="_blank">Visit<span class="link-icon"></span></a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <div class="banner-container" id="work-banner-container">
@@ -95,9 +278,10 @@
     might be of interest to me. Especially feedback or project ideas.
   </p>
   <form class="contact-controls">
-    <input class="contact-control" id="mail" type="email" placeholder="Your E-Mail"/>
-    <textarea class="contact-control" id="message" placeholder="Your message"></textarea>
-    <button id="contactSend" class="contact-control" disabled>Send</button>
+    <input class="contact-control" id="mailInput" type="email" placeholder="Your E-Mail"/>
+    <textarea class="contact-control" id="messageInput" placeholder="Your message" rows="6"></textarea>
+    <button id="contactSend" class="contact-control" type="button">Send</button>
+    <p class="contact-result-message" id="contactResultMessage">Error message</p>
   </form>
   <div class="contact-links">
     <a href="/" target="_self">© Micha Schweizer</a>
@@ -121,7 +305,5 @@
   100111
   01011
   0110</p>
-
-<script src='index.js'></script>
 </body>
 </html>

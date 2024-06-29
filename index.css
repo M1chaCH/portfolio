@@ -1,11 +1,14 @@
+/* FRAMEWORK */
 :root,
 [color-theme="default"] {
   --toned-gray: #4A4E4C;
   --michu-tech-primary: #C3C3C3;
+  --link-icon: url(assets/icons/light_link.svg);
 }
 
 [color-theme="dark"] {
   --michu-tech-primary: #4C4F4C;
+  --link-icon: url(assets/icons/dark_link.svg);
 }
 
 ::-moz-selection {
@@ -27,7 +30,9 @@ html {
 
 body {
   margin: 0;
-  min-height: 100svh;
+
+  /* workaround so that I can click stuff in the footer with z-index -1 */
+  pointer-events: none;
 }
 
 h1, h2, h3, h4 {
@@ -63,8 +68,120 @@ p {
   font-weight: 300;
 }
 
+/* HOME */
+main {
+  width: 100%;
+  max-width: 2500px;
+  margin: 0 auto;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+
+  pointer-events: all;
+}
+
+main section {
+  min-height: 100vh;
+}
+
+/* WORK */
+#work {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+#work h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.work-item {
+  box-sizing: border-box;
+  border-radius: 6px;
+  padding: 0 1vh;
+}
+
+.work-item div:not(.work-item-content) {
+  flex-shrink: 1;
+  margin-top: 5px;
+}
+
+.work-item h4 {
+  padding-top: 1vh;
+}
+
+.work-item .subtitle {
+  padding-top: 5px;
+  margin: 0 !important;
+}
+
+.work-item .work-item-content .image-container {
+  box-sizing: border-box;
+  border-radius: 16px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.work-item .work-item-content .description {
+  display: flex;
+  flex-flow: column;
+  gap: 2vh;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.work-item .anchor {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+
+  text-decoration: none;
+  color: unset;
+  font-weight: 200;
+}
+
+.link-icon {
+  display: inline-block;
+
+  background-image: var(--link-icon);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.tags {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 6px;
+}
+
+.tag {
+  background-color: var(--michu-tech-primary);
+  border-radius: 18px;
+  padding: 2px 12px;
+  box-sizing: border-box;
+
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#workOtherGithubAnchor {
+  text-decoration: none;
+  color: var(--michu-tech-accent);
+  font-weight: 300;
+}
+
+/* FOOTER AND BANNER */
 .banner-container {
   position: relative;
+  z-index: 99;
+  pointer-events: none;
 }
 
 .banner-container .banner {
@@ -77,24 +194,6 @@ p {
 
   --shadow-color: color-mix(in srgb, var(--michu-tech-primary) 50%, transparent);
   filter: drop-shadow(50px 20px 60px var(--shadow-color));
-}
-
-main {
-  width: 100%;
-  max-width: 2500px;
-  margin: 0 auto;
-
-  display: flex;
-  flex-flow: column;
-
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
-}
-
-main section {
-  min-height: 100svh;
 }
 
 footer {
@@ -114,6 +213,8 @@ footer {
 
   box-sizing: border-box;
   padding: 0 4vw;
+
+  pointer-events: all;
 }
 
 .contact-controls {
@@ -166,14 +267,14 @@ footer {
 .contact-links a {
   text-decoration: none;
   color: var(--michu-tech-primary);
+  cursor: pointer;
 }
 
-#mail {
+#mailInput {
   height: 52px;
 }
 
-#message {
-  height: 180px;
+#messageInput {
   resize: none;
 }
 
@@ -187,6 +288,11 @@ footer {
 
 #contactSend:disabled {
   opacity: 60%;
+}
+
+.contact-result-message {
+  font-weight: 500;
+  transition: all 200ms ease-out;
 }
 
 .striped-text {
@@ -205,8 +311,10 @@ footer {
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 2;
+  z-index: 101;
   transform: translate(-50%, -50%);
+
+  pointer-events: all;
 }
 
 .loading a img {
@@ -223,7 +331,7 @@ footer {
   position: fixed;
   bottom: 3vw;
   right: 3vw;
-  z-index: 2;
+  z-index: 100;
 
   width: 50px;
   height: 50px;
@@ -231,6 +339,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  pointer-events: all;
 }
 
 .theme-toggle #theme-toggle-button {
@@ -238,6 +348,7 @@ footer {
 
   cursor: pointer;
   transition: all 200ms ease-out;
+  opacity: 80%;
 }
 
 .theme-toggle #theme-toggle-button:hover {
@@ -258,12 +369,12 @@ footer {
   position: fixed;
   bottom: 20px;
   left: -10px;
-  z-index: 2;
+  z-index: 100;
 }
 
 #binary-text {
   position: fixed;
   top: 20px;
   right: -10px;
-  z-index: 2;
+  z-index: 100;
 }

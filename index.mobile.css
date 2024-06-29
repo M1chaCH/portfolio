@@ -1,7 +1,67 @@
+/* FRAMEWORK */
 .only-desktop {
   display: none !important;
 }
 
+/* small screen and touchscreen */
+:root, [color-theme="default"] {
+  --work-teachu-image: url(assets/images/work/mobile-teachu-light.webp);
+  --work-automation-image: url(assets/images/work/mobile-automation-light.webp);
+  --work-other-image: url(assets/images/work/mobile-other-light.webp);
+  --work-deployment-image: url(assets/images/work/mobile-controller-light.webp);
+  --work-prayer-image: url(assets/images/work/mobile-prayer-light.webp);
+  --work-budget-image: url(assets/images/work/mobile-budget-light.webp);
+}
+
+[color-theme="dark"] {
+  --work-teachu-image: url(assets/images/work/mobile-teachu-dark.webp);
+  --work-other-image: url(assets/images/work/mobile-other-dark.webp);
+  --work-deployment-image: url(assets/images/work/mobile-controller-dark.webp);
+  --work-budget-image: url(assets/images/work/mobile-budget-dark.webp);
+}
+
+/* not touchscreen */
+@media (any-pointer: fine) {
+  :root, [color-theme="default"] {
+    --work-teachu-image: url(assets/images/work/desktop-teachu-light.webp);
+    --work-automation-image: url(assets/images/work/desktop-room-automation.webp);
+    --work-other-image: url(assets/images/work/desktop-other-light.webp);
+    --work-deployment-image: url(assets/images/work/desktop-controller-light.webp);
+    --work-prayer-image: url(assets/images/work/mobile-prayer-light.webp);
+    --work-budget-image: url(assets/images/work/desktop-budget-light.webp);
+  }
+
+  [color-theme="dark"] {
+    --work-teachu-image: url(assets/images/work/desktop-teachu-dark.webp);
+    --work-other-image: url(assets/images/work/desktop-other-dark.webp);
+    --work-deployment-image: url(assets/images/work/desktop-controller-dark.webp);
+    --work-budget-image: url(assets/images/work/desktop-controller-dark.webp);
+  }
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+h4 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 12px;
+  line-height: 120%;
+}
+
+/* MOBILE SPECIFIC CONTENT */
+/* HOME */
 .home {
   position: relative;
   width: 100%;
@@ -32,6 +92,64 @@
   background-position: -10px 1.35rem;
 }
 
+/* WORK */
+.work-items {
+  display: flex;
+  flex-flow: column;
+  gap: 4vh;
+  margin: 0 auto;
+  max-width: 90vw;
+}
+
+.work-item {
+  margin-top: 0 !important;
+  background-color: color-mix(in srgb, var(--toned-gray) 12%, transparent);
+}
+
+.work-item .work-item-content {
+  display: flex;
+  flex-flow: column;
+  gap: 1vh;
+}
+
+.work-item .work-item-content .image-container {
+  height: 42vh;
+}
+
+.work-item .work-item-content .description p {
+  text-align: left;
+  width: 100%;
+}
+
+.work-item .work-item-footer {
+  display: flex;
+  flex-flow: column;
+  gap: 2vh;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 2vh;
+}
+
+.tags {
+  align-items: center;
+  justify-content: center;
+}
+
+.tag {
+  font-size: 10px;
+}
+
+#workOtherGithubAnchor {
+  font-size: 15px;
+}
+
+.link-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* banner and footer */
 .overlay-text {
   font-size: 22px;
   line-height: 22px;
@@ -53,25 +171,4 @@
 
 .contact-controls .contact-control {
   font-size: 12px;
-}
-
-h1 {
-  font-size: 32px;
-}
-
-h2 {
-  font-size: 24px;
-}
-
-h3 {
-  font-size: 20px;
-}
-
-h4 {
-  font-size: 18px;
-}
-
-p {
-  font-size: 12px;
-  line-height: 120%;
 }
