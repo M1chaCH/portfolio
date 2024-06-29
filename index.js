@@ -265,7 +265,7 @@ function registerContactSend() {
     }
 
     try {
-      const response = await fetch('https://michu-tech.com/root/contact', {
+      const response = await fetch('https://michu-tech.com/host/backend/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
