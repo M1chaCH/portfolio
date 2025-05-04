@@ -268,8 +268,9 @@ function registerContactSend() {
       const response = await fetch('https://host.michu-tech.com/backend/open/contact', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           mail: mailElement.value,
           message,
