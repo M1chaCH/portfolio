@@ -255,8 +255,8 @@ function registerContactSend() {
       return;
     }
     const message = messageElement.value;
-    if (message.length > 500) {
-      toggleContactMessageDisplay(contactMessageElement, true, true, `Please keep your message shorter than 500 characters. (${ message.length })`);
+    if (message.length > 1000) {
+      toggleContactMessageDisplay(contactMessageElement, true, true, `Please keep your message shorter than 1000 characters. (${ message.length })`);
       return;
     }
     if (message.length < 30) {
@@ -265,7 +265,7 @@ function registerContactSend() {
     }
 
     try {
-      const response = await fetch('https://michu-tech.com/host/backend/contact', {
+      const response = await fetch('https://host.michu-tech.com/backend/open/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
